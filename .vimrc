@@ -33,8 +33,6 @@ set hidden " allow unsaved buffers in background
 set number
 set cursorline
 set expandtab
-set shiftwidth=2
-set tabstop=2
 set autoindent
 set smartindent
 set tags=tags;/
@@ -44,8 +42,9 @@ syntax on
 let mapleader='\'
 
 " filetype specific config
+autocmd BufNewFile,BufRead *.*         set tabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.twig-html set syntax=html
-autocmd BufNewFile,BufRead *.php set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *.php       set tabstop=4 shiftwidth=4
 
 " stylings
 highlight LineNr ctermfg=darkgray
