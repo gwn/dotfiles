@@ -8,23 +8,34 @@ call vundle#rc()
 
 " Bundle list
 Bundle 'gmarik/vundle'
-Bundle "taglist.vim"
-Bundle "scrooloose/nerdtree"
-Bundle "joonty/vdebug"
-Bundle "ledger/vim-ledger"
-Bundle "godlygeek/tabular"
-Bundle "kien/ctrlp.vim"
-Bundle "tpope/vim-fugitive"
-" Bundle "shawncplus/phpcomplete.vim"
-" Bundle "spf13/PIV"
-" Bundle "joonty/vim-phpqa"
-" Bundle "myusuf3/numbers.vim"
+Bundle 'scrooloose/nerdtree'
+Bundle 'joonty/vdebug'
+Bundle 'ledger/vim-ledger'
+Bundle 'godlygeek/tabular'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'spf13/PIV'
+Bundle 'scrooloose/syntastic'
+Bundle 'majutsushi/tagbar'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'ervandew/supertab'
+Bundle 'shawncplus/phpcomplete.vim'
+Bundle 'myusuf3/numbers.vim'
+Bundle 'tmhedberg/matchit'
+Bundle 'vim-scripts/Gundo'
+" Bundle 'garbas/vim-snipmate'
+" Bundle 'joonty/vim-phpqa'
+" Bundle 'joonty/vim-taggatron'
+" Bundle 'Shougo/neocomplcache.vim'
+" Bundle 'joonty/vim-sauce'
 
 filetype plugin indent on
 """ end vundle """
 
 
 """ config """
+syntax on
+
 set encoding=utf8
 set ruler
 set backspace=indent,eol,start
@@ -36,15 +47,50 @@ set expandtab
 set autoindent
 set smartindent
 set tags=tags;/
-
-syntax on
+set ignorecase
+set wrapscan
+set incsearch
+set hlsearch
+set viewoptions=folds,cursor
 
 let mapleader='\'
 
+" folding options
+fu! CustomFoldText()
+    "get first non-blank line
+    let fs = v:foldstart
+    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+    endwhile
+    if fs > v:foldend
+        let line = getline(v:foldstart)
+    else
+        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
+
+    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = " " . foldSize . " lines "
+    let foldLevelStr = repeat("+--", v:foldlevel)
+    let lineCount = line("$")
+    let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+    let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+    " return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+    return line . expansionString . foldSizeStr . foldLevelStr
+endf
+
+hi Folded ctermfg=4 ctermbg=0
+
+" autocommands
+autocmd BufWinLeave        ?* mkview
+autocmd BufWinEnter        ?* silent loadview 
+autocmd BufNewFile,BufRead ?* set tabstop=2 shiftwidth=2
+autocmd BufWinLeave        ?* set foldtext=CustomFoldText()
+
 " filetype specific config
-autocmd BufNewFile,BufRead *.*         set tabstop=2 shiftwidth=2
-autocmd BufNewFile,BufRead *.twig-html set syntax=html
-autocmd BufNewFile,BufRead *.php       set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *.php set tabstop=4 shiftwidth=4
+autocmd BufNewFile,BufRead *.php normal zR
+
+autocmd BufNewFile,BufRead *.twig-html,*.mustache set filetype=html
 
 " stylings
 highlight LineNr ctermfg=darkgray
@@ -56,6 +102,8 @@ let tlist_php_settings='php;f:function'
 " let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
 "                       \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 
+let g:syntastic_ignore_files=['\v^.*\.(twig-html|mustache)$']
+
 "" end config """
 
 
@@ -65,12 +113,14 @@ map <leader>c :call ToggleColorColumn()<CR> " put a gray column at col 80
 map <leader>u :set number!<CR>
 map <leader>w :set wrap!<CR>
 map <leader>r :set ruler!<CR>
+map <leader>h :set hlsearch!<CR>
 map <C-l> :bn<CR>
 map <C-h> :bp<CR>
 
 " plugin mappings
-map <leader>t :TlistToggle<CR>
+map <leader>t :TagbarToggle<CR>
 map <leader>n :NERDTreeToggle<CR>
+map <leader>rn :NumbersToggle<CR>
 
 let g:vdebug_keymap = {
 \    "run" : "<leader>d",
@@ -104,10 +154,10 @@ endif
 function ToggleColorColumn()
     highlight ColorColumn ctermbg=7
 
-    if &colorcolumn == 100
+    if &colorcolumn == 80
         set colorcolumn=0
     else
-        set colorcolumn=100
+        set colorcolumn=80
     endif
 endfunction
 """ end helpers """
