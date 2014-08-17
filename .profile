@@ -76,9 +76,6 @@ alias ced="c edit"
 # taskwarrior, ledger, gcalcli summary
 alias rep='(date; printf "\n## CALENDAR ####################################################################\n"; ca; printf "\n\n## TASKS DUE TODAY #############################################################\n\n"; tt rc._forcecolor=on; printf "\n\n## FINANCES ####################################################################\n\n"; eq --color --force-color;) | less'
 
-# newsbeuter workaround
-alias newsbeuter="LANG=en_GB newsbeuter"
-
 # wordnet
 function wno() { wn $1 -over | fold -sw70 | less; }
 
