@@ -59,6 +59,8 @@ bindkey "^W" backward-kill-word    # vi-backward-kill-word
 bindkey "^H" backward-delete-char  # vi-backward-delete-char
 bindkey "^U" backward-kill-line    # vi-kill-line
 bindkey "^?" backward-delete-char  # vi-backward-delete-char
+bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ege/.composer/vendor/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
