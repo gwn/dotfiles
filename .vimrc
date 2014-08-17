@@ -15,7 +15,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'spf13/PIV'
-Bundle 'scrooloose/syntastic'
+" Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'ervandew/supertab'
@@ -23,6 +23,10 @@ Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'tmhedberg/matchit'
 Bundle 'vim-scripts/Gundo'
+Bundle 'tpope/vim-surround'
+Bundle 'rking/ag.vim'
+Bundle 'mattn/gist-vim'
+Bundle 'rstacruz/sparkup'
 " Bundle 'garbas/vim-snipmate'
 " Bundle 'joonty/vim-phpqa'
 " Bundle 'joonty/vim-taggatron'
@@ -31,7 +35,6 @@ Bundle 'vim-scripts/Gundo'
 
 filetype plugin indent on
 """ end vundle """
-
 
 """ config """
 syntax on
@@ -51,58 +54,37 @@ set ignorecase
 set wrapscan
 set incsearch
 set hlsearch
-set viewoptions=folds,cursor
+" set viewoptions=folds,cursor
+set viewoptions=cursor
+set clipboard=unnamed
 
 let mapleader='\'
 
-" folding options
-fu! CustomFoldText()
-    "get first non-blank line
-    let fs = v:foldstart
-    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
-    endwhile
-    if fs > v:foldend
-        let line = getline(v:foldstart)
-    else
-        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
-    endif
-
-    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
-    let foldSize = 1 + v:foldend - v:foldstart
-    let foldSizeStr = " " . foldSize . " lines "
-    let foldLevelStr = repeat("+--", v:foldlevel)
-    let lineCount = line("$")
-    let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
-    let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
-    " return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
-    return line . expansionString . foldSizeStr . foldLevelStr
-endf
-
-hi Folded ctermfg=4 ctermbg=0
-
 " autocommands
-autocmd BufWinLeave        ?* mkview
-autocmd BufWinEnter        ?* silent loadview 
+autocmd BufWinLeave        ?* mkview            " for remembering
+autocmd BufWinEnter        ?* silent! loadview   " view (fold etc.) settings
 autocmd BufNewFile,BufRead ?* set tabstop=2 shiftwidth=2
-autocmd BufWinLeave        ?* set foldtext=CustomFoldText()
+autocmd BufNewFile,BufRead ?* set foldtext=CustomFoldText()
 
 " filetype specific config
 autocmd BufNewFile,BufRead *.php set tabstop=4 shiftwidth=4
-autocmd BufNewFile,BufRead *.php normal zR
 
 autocmd BufNewFile,BufRead *.twig-html,*.mustache set filetype=html
 
 " stylings
 highlight LineNr ctermfg=darkgray
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE
+highlight Folded ctermfg=4 ctermbg=0
 
 " plugin config
 let g:NERDTreeWinPos="right"
 let tlist_php_settings='php;f:function' 
+let g:DisableAutoPHPFolding = 1
+
 " let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
 "                       \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 
-let g:syntastic_ignore_files=['\v^.*\.(twig-html|mustache)$']
+" let g:syntastic_ignore_files=['\v^.*\.(twig-html|mustache)$']
 
 "" end config """
 
@@ -121,6 +103,7 @@ map <C-h> :bp<CR>
 map <leader>t :TagbarToggle<CR>
 map <leader>n :NERDTreeToggle<CR>
 map <leader>rn :NumbersToggle<CR>
+map <C-k> :NumbersToggle<CR>
 
 let g:vdebug_keymap = {
 \    "run" : "<leader>d",
@@ -151,6 +134,29 @@ endif
 
 
 """ helpers """
+
+function CustomFoldText()
+    "get first non-blank line
+    let fs = v:foldstart
+    while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+    endwhile
+    if fs > v:foldend
+        let line = getline(v:foldstart)
+    else
+        let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+    endif
+
+    let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0)
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = " " . foldSize . " lines "
+    let foldLevelStr = repeat("+--", v:foldlevel)
+    let lineCount = line("$")
+    let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+    let expansionString = repeat(".", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+    " return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+    return line . expansionString . foldSizeStr . foldLevelStr
+endf
+
 function ToggleColorColumn()
     highlight ColorColumn ctermbg=7
 
