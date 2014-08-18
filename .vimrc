@@ -27,6 +27,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'rking/ag.vim'
 Bundle 'mattn/gist-vim'
 Bundle 'rstacruz/sparkup'
+Bundle 'ton/vim-bufsurf'
 " Bundle 'garbas/vim-snipmate'
 " Bundle 'joonty/vim-phpqa'
 " Bundle 'joonty/vim-taggatron'
@@ -96,8 +97,8 @@ map <leader>u :set number!<CR>
 map <leader>w :set wrap!<CR>
 map <leader>r :set ruler!<CR>
 map <leader>h :set hlsearch!<CR>
-map <C-l> :bn<CR>
-map <C-h> :bp<CR>
+map <C-l> :BufSurfForward<CR>
+map <C-h> :BufSurfBack<CR>
 
 " plugin mappings
 map <leader>t :TagbarToggle<CR>
