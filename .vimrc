@@ -13,26 +13,33 @@ Bundle 'joonty/vdebug'
 Bundle 'ledger/vim-ledger'
 Bundle 'godlygeek/tabular'
 Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'spf13/PIV'
+" Bundle 'tpope/vim-fugitive'
+" Bundle 'spf13/PIV'
 " Bundle 'scrooloose/syntastic'
 Bundle 'majutsushi/tagbar'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'ervandew/supertab'
+" Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'ervandew/supertab'
 Bundle 'shawncplus/phpcomplete.vim'
+Bundle 'marijnh/tern_for_vim'
+" Bundle 'mklabs/vim-backbone'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'tmhedberg/matchit'
-Bundle 'vim-scripts/Gundo'
+" Bundle 'vim-scripts/Gundo'
 Bundle 'tpope/vim-surround'
 Bundle 'rking/ag.vim'
-Bundle 'mattn/gist-vim'
+" Bundle 'mattn/gist-vim'
 Bundle 'rstacruz/sparkup'
 Bundle 'ton/vim-bufsurf'
+" Bundle 'maksimr/vim-jsbeautify'
+" Bundle 'einars/js-beautify'
 " Bundle 'garbas/vim-snipmate'
 " Bundle 'joonty/vim-phpqa'
 " Bundle 'joonty/vim-taggatron'
 " Bundle 'Shougo/neocomplcache.vim'
 " Bundle 'joonty/vim-sauce'
+Bundle 'fatih/vim-go'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 
 filetype plugin indent on
 """ end vundle """
@@ -50,7 +57,7 @@ set cursorline
 set expandtab
 set autoindent
 set smartindent
-set tags=tags;/
+set tags=./tags,tags,_tags
 set ignorecase
 set wrapscan
 set incsearch
@@ -58,6 +65,8 @@ set hlsearch
 " set viewoptions=folds,cursor
 set viewoptions=cursor
 set clipboard=unnamed
+set fileformats=unix,dos,mac
+set completeopt=menuone
 
 let mapleader='\'
 
@@ -87,6 +96,8 @@ let g:DisableAutoPHPFolding = 1
 
 " let g:syntastic_ignore_files=['\v^.*\.(twig-html|mustache)$']
 
+let g:UltiSnipsExpandTrigger="<C-s>"
+
 "" end config """
 
 
@@ -101,10 +112,16 @@ map <C-l> :BufSurfForward<CR>
 map <C-h> :BufSurfBack<CR>
 
 " plugin mappings
-map <leader>t :TagbarToggle<CR>
 map <leader>n :NERDTreeToggle<CR>
 map <leader>rn :NumbersToggle<CR>
 map <C-k> :NumbersToggle<CR>
+
+" Tagbar
+map <leader>t :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+let g:tagbar_sort = 0
+" let g:tagbar_autoclose = 1
+let g:tagbar_top_align = 1
 
 let g:vdebug_keymap = {
 \    "run" : "<leader>d",
@@ -119,6 +136,8 @@ let g:vdebug_keymap = {
 \    "eval_under_cursor" : "<leader>E",
 \    "eval_visual" : "<Leader>e",
 \}
+
+let g:vdebug_features = { 'max_children': 256 }
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>

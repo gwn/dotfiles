@@ -4,7 +4,7 @@ function last_two_dirs {
 }
 export PS1='$(last_two_dirs)> '
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ege/.composer/vendor/bin
 
 export EDITOR=vi
 
@@ -19,7 +19,7 @@ stty -ixon
 
 # source ranger plugins
 # this must be modified to source all the files in the plugins directory
-source ~/.config/ranger/plugins/bash_automatic_cd.sh
+# source ~/.config/ranger/plugins/bash_automatic_cd.sh
 
 # aliases
 alias l='ls'
@@ -47,6 +47,8 @@ alias gb="git branch"
 # taskwarrior
 alias t=task
 alias tt="t due.before:tomorrow"
+alias ttw="t due.before:mon"
+alias ttm="t due.before:eom"
 
 # ledger
 alias le="ledger -f $HOME/ledger/ege.ldg --pager cat"
@@ -76,8 +78,18 @@ alias ced="c edit"
 # taskwarrior, ledger, gcalcli summary
 alias rep='(date; printf "\n## CALENDAR ####################################################################\n"; ca; printf "\n\n## TASKS DUE TODAY #############################################################\n\n"; tt rc._forcecolor=on; printf "\n\n## FINANCES ####################################################################\n\n"; eq --color --force-color;) | less'
 
+# newsbeuter workaround
+alias newsbeuter="LANG=en_GB newsbeuter"
+
 # wordnet
 function wno() { wn $1 -over | fold -sw70 | less; }
 
 # wikipedia
 wiki() { dig +short txt $1.wp.dg.cx | fold -sw70 | less; }
+
+
+export       JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
+# export NUTCH_JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands
+export HERITRIX_HOME=/Users/ege/opt/heritrix-3.2.0
+
+# export JAVA_OPTS=-Xmx1024M

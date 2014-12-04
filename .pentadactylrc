@@ -1,4 +1,12 @@
-map h gT
-map l gt
+"hg7121
+
+loadplugins '\.(js|penta)$'
+group user
+map -count -modes=n,v h <count>gT
+map -count -modes=n,v l <count>gt
+map -count -modes=n C -builtin <count>:emenu<Space>Tools.Clearly<Return>
+set guioptions=bCr
 set passkeys=mail.google.com:xsem!#rRaAvN[]{}z.IU=-gidac/?lujkonpft`~<ESC><CR>
 set strictfocus='chrome:*':laissez-faire,*:laissez-faire
+
+" vim: set ft=pentadactyl:

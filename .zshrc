@@ -142,3 +142,13 @@ function wno() { wn $1 -over | fold -sw70 | less; }
 
 # wikipedia
 wiki() { dig +short txt $1.wp.dg.cx | fold -sw70 | less; }
+
+export       JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
+# export NUTCH_JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands
+export HERITRIX_HOME=/Users/ege/opt/heritrix-3.2.0
+
+# export JAVA_OPTS=-Xmx1024M
+
+export HOMEBREW_GITHUB_API_TOKEN=b530304a7ff5fd3c5b8e767c2ac31a5849ec70e2
+
+export GOPATH=/usr/local/bin
