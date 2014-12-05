@@ -1,0 +1,5 @@
+set gui=nonavigation
+
+map h gT
+map l gt
+map s :tabopen google 
