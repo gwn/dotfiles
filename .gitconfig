@@ -1,3 +1,9 @@
 [user]
 	email = egeavunc@gmail.com
 	name = Ege Avunç
+[alias]
+	br = branch
+  co = checkout
+  cm = commit
+  st = status
+  df = diff
