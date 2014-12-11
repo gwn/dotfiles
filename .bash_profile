@@ -5,7 +5,7 @@ source $HOME/.git-prompt.sh
 function last_two_dirs {
     pwd |rev| awk -F / '{print $1,$2}' | rev | sed s_\ _/_
 }
-export PS1='$(last_two_dirs)$(__git_ps1 " @%s" | cut -c1-5)> '
+export PS1='$(last_two_dirs)$(__git_ps1 " @%s" | cut -c1-5)\$ '
 
 export EDITOR=vi
 
