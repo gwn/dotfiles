@@ -1,0 +1,7 @@
+set encoding=utf8
+set ruler
+set backspace=indent,eol,start
+set nowrap
+set expandtab
+set wrapscan
+set fileformats=unix,dos,mac
