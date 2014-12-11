@@ -3,44 +3,46 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Bundle list
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'joonty/vdebug'
-Bundle 'ledger/vim-ledger'
-Bundle 'godlygeek/tabular'
-Bundle 'kien/ctrlp.vim'
-" Bundle 'tpope/vim-fugitive'
-" Bundle 'spf13/PIV'
-" Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-" Bundle 'Lokaltog/vim-easymotion'
-" Bundle 'ervandew/supertab'
-Bundle 'shawncplus/phpcomplete.vim'
-Bundle 'marijnh/tern_for_vim'
-" Bundle 'mklabs/vim-backbone'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'tmhedberg/matchit'
-" Bundle 'vim-scripts/Gundo'
-Bundle 'tpope/vim-surround'
-Bundle 'rking/ag.vim'
-" Bundle 'mattn/gist-vim'
-Bundle 'rstacruz/sparkup'
-Bundle 'ton/vim-bufsurf'
-" Bundle 'maksimr/vim-jsbeautify'
-" Bundle 'einars/js-beautify'
-" Bundle 'garbas/vim-snipmate'
-" Bundle 'joonty/vim-phpqa'
-" Bundle 'joonty/vim-taggatron'
-" Bundle 'Shougo/neocomplcache.vim'
-" Bundle 'joonty/vim-sauce'
-Bundle 'fatih/vim-go'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
+" Plugin list
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/nerdtree'
+Plugin 'joonty/vdebug'
+Plugin 'ledger/vim-ledger'
+Plugin 'godlygeek/tabular'
+Plugin 'kien/ctrlp.vim'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'spf13/PIV'
+" Plugin 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
+" Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'ervandew/supertab'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'marijnh/tern_for_vim'
+" Plugin 'mklabs/vim-backbone'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'tmhedberg/matchit'
+" Plugin 'vim-scripts/Gundo'
+Plugin 'tpope/vim-surround'
+Plugin 'rking/ag.vim'
+" Plugin 'mattn/gist-vim'
+Plugin 'rstacruz/sparkup'
+Plugin 'ton/vim-bufsurf'
+" Plugin 'maksimr/vim-jsbeautify'
+" Plugin 'einars/js-beautify'
+" Plugin 'garbas/vim-snipmate'
+" Plugin 'joonty/vim-phpqa'
+" Plugin 'joonty/vim-taggatron'
+" Plugin 'Shougo/neocomplcache.vim'
+" Plugin 'joonty/vim-sauce'
+Plugin 'fatih/vim-go'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-obsession'
 
+call vundle#end()
 filetype plugin indent on
 """ end vundle """
 
