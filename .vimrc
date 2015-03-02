@@ -8,7 +8,7 @@ call vundle#begin()
 
 " Plugin list
 Plugin 'gmarik/vundle'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
 Plugin 'joonty/vdebug'
 Plugin 'ledger/vim-ledger'
 Plugin 'godlygeek/tabular'
@@ -20,7 +20,7 @@ Plugin 'majutsushi/tagbar'
 " Plugin 'Lokaltog/vim-easymotion'
 " Plugin 'ervandew/supertab'
 Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 " Plugin 'mklabs/vim-backbone'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'tmhedberg/matchit'
@@ -41,6 +41,8 @@ Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-rails'
+Plugin 'othree/html5.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -88,6 +90,9 @@ highlight LineNr ctermfg=darkgray
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Folded ctermfg=4 ctermbg=0
 
+" color scheme
+colorscheme jellybeans
+
 " plugin config
 let g:NERDTreeWinPos="right"
 let tlist_php_settings='php;f:function' 
@@ -110,16 +115,18 @@ map <leader>u :set number!<CR>
 map <leader>w :set wrap!<CR>
 map <leader>r :set ruler!<CR>
 map <leader>h :set hlsearch!<CR>
+map <leader>8 gggqGgg
 map <C-l> :BufSurfForward<CR>
 map <C-h> :BufSurfBack<CR>
 
 " plugin mappings
-map <leader>n :NERDTreeToggle<CR>
-map <leader>rn :NumbersToggle<CR>
-map <C-k> :NumbersToggle<CR>
+map <leader>n :NumbersToggle<CR>
+" map <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>r :<C-U>RangerChooser<CR>
 
 " Tagbar
 map <leader>t :TagbarToggle<CR>
+
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
 " let g:tagbar_autoclose = 1
@@ -188,4 +195,40 @@ function ToggleColorColumn()
         set colorcolumn=80
     endif
 endfunction
+
+" Compatible with ranger 1.4.2 through 1.6.*
+"
+" Add ranger as a file chooser in vim
+"
+" If you add this code to the .vimrc, ranger can be started using the command
+" ":RangerChooser" or the keybinding "<leader>r".  Once you select one or more
+" files, press enter and ranger will quit again and vim will open the selected
+" files.
+
+function! RangeChooser()
+    let temp = tempname()
+    " The option "--choosefiles" was added in ranger 1.5.1. Use the next line
+    " with ranger 1.4.2 through 1.5.0 instead.
+    "exec 'silent !ranger --choosefile=' . shellescape(temp)
+    exec 'silent !ranger --choosefiles=' . shellescape(temp)
+    if !filereadable(temp)
+        redraw!
+        " Nothing to read.
+        return
+    endif
+    let names = readfile(temp)
+    if empty(names)
+        redraw!
+        " Nothing to open.
+        return
+    endif
+    " Edit the first item.
+    exec 'edit ' . fnameescape(names[0])
+    " Add any remaning items to the arg list/buffer list.
+    for name in names[1:]
+        exec 'argadd ' . fnameescape(name)
+    endfor
+    redraw!
+endfunction
+command! -bar RangerChooser call RangeChooser()
 """ end helpers """

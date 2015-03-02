@@ -41,7 +41,6 @@ trim() { head -n "$maxln"; }
 
 # wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
 highlight() { command highlight "$@"; test $? = 0 -o $? = 141; }
-# pyg() { pygmentize -f terminal256 -O style=desert "$@"; }
 
 case "$extension" in
     # Archive extensions:
@@ -72,7 +71,6 @@ case "$mimetype" in
     # Syntax highlight for text files:
     text/* | */xml)
         try highlight --out-format=ansi "$path" && { dump | trim; exit 5; } || exit 2;;
-        # try pyg "$path" && { dump | trim; exit 5; } || exit 2;;
     # Ascii-previews of images:
     image/*)
         img2txt --gamma=0.6 --width="$width" "$path" && exit 4 || exit 1;;

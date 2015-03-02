@@ -1,8 +1,10 @@
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+
 # prompt
 function last_two_dirs {
     pwd |rev| awk -F / '{print $1,$2}' | rev | sed s_\ _/_
 }
-export PS1='$(last_two_dirs)> '
+export PS1='$(last_two_dirs)$(__git_ps1 " @%s" | cut -c1-5)\$ '
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ege/.composer/vendor/bin
 
@@ -33,6 +35,10 @@ alias j=jobs
 alias f=fg
 alias clr=clear
 alias x=clr
+
+# tmux
+alias ta="tmux -2 attach -t"
+alias tls="tmux ls"
 
 # git
 alias gs="git status"
@@ -87,9 +93,14 @@ function wno() { wn $1 -over | fold -sw70 | less; }
 # wikipedia
 wiki() { dig +short txt $1.wp.dg.cx | fold -sw70 | less; }
 
+# go to root of current project/task, which is read from $PROJROOT
+cdr() { cd $PROJROOT; }
+
 
 export       JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
 # export NUTCH_JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands
 export HERITRIX_HOME=/Users/ege/opt/heritrix-3.2.0
 
 # export JAVA_OPTS=-Xmx1024M
+
+alias vitt="vit due.before:tomorrow"
