@@ -6,8 +6,6 @@ function last_two_dirs {
 }
 export PS1='$(last_two_dirs)$(__git_ps1 " @%s" | cut -c1-5)\$ '
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ege/.composer/vendor/bin
-
 export EDITOR=vi
 
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
