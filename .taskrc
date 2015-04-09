@@ -26,3 +26,5 @@ data.location=~/.task
 #include /usr/local/Cellar/task/2.3.0/share/doc/task/rc/dark-gray-256.theme
 
 dateformat=a d.m
+
+report.minimal.sort=urgency-
