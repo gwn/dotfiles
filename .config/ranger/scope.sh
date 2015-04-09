@@ -60,11 +60,11 @@ case "$extension" in
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
     # HTML Pages:
-    htm|html|xhtml)
-        try w3m    -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
-        try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
-        try elinks -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
-        ;; # fall back to highlight/cat if the text browsers fail
+    # htm|html|xhtml)
+    #     try w3m    -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
+    #     try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
+    #     try elinks -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
+    #     ;; # fall back to highlight/cat if the text browsers fail
 esac
 
 case "$mimetype" in
