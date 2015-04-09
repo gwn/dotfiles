@@ -33,7 +33,7 @@ alias ll='l -l'
 alias grep='grep --colour'
 alias j=jobs
 alias f=fg
-alias x=clr
+alias x=clear
 
 # tmux
 alias ta="tmux -2 attach -t"
