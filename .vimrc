@@ -43,6 +43,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-rails'
 Plugin 'othree/html5.vim'
+Plugin 'nanotech/jellybeans.vim'
 
 call vundle#end()
 filetype plugin indent on

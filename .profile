@@ -1,4 +1,4 @@
-source /usr/local/etc/bash_completion.d/git-prompt.sh
+source .git-prompt.sh
 
 # prompt
 function last_two_dirs {
@@ -6,9 +6,9 @@ function last_two_dirs {
 }
 export PS1='$(last_two_dirs)$(__git_ps1 " @%s" | cut -c1-5)\$ '
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ege/.composer/vendor/bin
-
 export EDITOR=vi
+
+export PAGER=less
 
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
@@ -33,28 +33,23 @@ alias ll='l -l'
 alias grep='grep --colour'
 alias j=jobs
 alias f=fg
-alias clr=clear
-alias x=clr
+alias x=clear
 
 # tmux
 alias ta="tmux -2 attach -t"
 alias tls="tmux ls"
 
-# git
-alias gs="git status"
-alias ga="git add"
-alias gc="git commit -m"
-alias gam="git commit -am"
-alias gr="git remove"
-alias gl="git log"
-alias gd="git diff"
-alias gb="git branch"
+# ranger
+alias rr="ranger"
 
 # taskwarrior
 alias t=task
 alias tt="t due.before:tomorrow"
 alias ttw="t due.before:mon"
 alias ttm="t due.before:eom"
+
+# vit
+alias vitt="vit due.before:tomorrow"
 
 # ledger
 alias le="ledger -f $HOME/ledger/ege.ldg --pager cat"
@@ -96,11 +91,3 @@ wiki() { dig +short txt $1.wp.dg.cx | fold -sw70 | less; }
 # go to root of current project/task, which is read from $PROJROOT
 cdr() { cd $PROJROOT; }
 
-
-export       JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home
-# export NUTCH_JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands
-export HERITRIX_HOME=/Users/ege/opt/heritrix-3.2.0
-
-# export JAVA_OPTS=-Xmx1024M
-
-alias vitt="vit due.before:tomorrow"
