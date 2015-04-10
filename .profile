@@ -34,6 +34,7 @@ alias grep='grep --colour'
 alias j=jobs
 alias f=fg
 alias x=clear
+alias h=hostname
 
 # tmux
 alias ta="tmux -2 attach -t"
