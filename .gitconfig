@@ -1,28 +1,10 @@
 [user]
 	name = Ege Avunc
-	email = egeavunc@gmail.com
+	email = 
 [alias]
-  s  = status
-  c  = commit
-  l  = log
-  a  = add
-  d  = diff
-  r  = remote
-  b  = branch
+  st  = status
+  cm  = commit
+  br  = branch
 	co = checkout
-  rl = reflog
-  pl = pull
-  ps = push
-[filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
 [core]
-	excludesfile = /Users/ege/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[push]
-	default = matching
+	editor = /usr/local/bin/vim

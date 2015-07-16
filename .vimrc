@@ -20,9 +20,9 @@ Plugin 'majutsushi/tagbar'
 " Plugin 'Lokaltog/vim-easymotion'
 " Plugin 'ervandew/supertab'
 Plugin 'shawncplus/phpcomplete.vim'
-" Plugin 'marijnh/tern_for_vim'
+Plugin 'marijnh/tern_for_vim'
 " Plugin 'mklabs/vim-backbone'
-Plugin 'myusuf3/numbers.vim'
+" Plugin 'myusuf3/numbers.vim'
 Plugin 'tmhedberg/matchit'
 " Plugin 'vim-scripts/Gundo'
 Plugin 'tpope/vim-surround'
@@ -57,7 +57,7 @@ set ruler
 set backspace=indent,eol,start
 set nowrap
 set hidden " allow unsaved buffers in background
-set number
+set nonumber
 set cursorline
 set expandtab
 set autoindent
@@ -102,7 +102,24 @@ let g:DisableAutoPHPFolding = 1
 " let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
 "                       \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 
+
+" syntastic
 " let g:syntastic_ignore_files=['\v^.*\.(twig-html|mustache)$']
+
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" 
+" let g:syntastic_quiet_messages = {
+"     \ "!level": "errors",
+"     \ "type"  : "style"
+" \}
+" 
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" " let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" " end syntastic
 
 let g:UltiSnipsExpandTrigger="<C-s>"
 
@@ -119,6 +136,7 @@ map <leader>h :set hlsearch!<CR>
 map <leader>8 gggqGgg
 map <C-l> :BufSurfForward<CR>
 map <C-h> :BufSurfBack<CR>
+cmap w!! w !sudo tee %
 
 " plugin mappings
 map <leader>n :NumbersToggle<CR>
@@ -148,6 +166,8 @@ let g:vdebug_keymap = {
 \}
 
 let g:vdebug_features = { 'max_children': 256 }
+
+map <leader>e :VdebugEval 
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>

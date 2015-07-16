@@ -1,4 +1,4 @@
-source .git-prompt.sh
+source $HOME/.git-prompt.sh
 
 # prompt
 function last_two_dirs {
@@ -6,15 +6,20 @@ function last_two_dirs {
 }
 export PS1='$(last_two_dirs)$(__git_ps1 " @%s" | cut -c1-5)\$ '
 
-export EDITOR=vi
+export EDITOR=vim
 
 export PAGER=less
 
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
+export PATH=$PATH:/opt/bin
+
 # use gnu src-hilite with less
 export LESSOPEN="|/usr/local/Cellar/source-highlight/3.1.7/bin/src-hilite-lesspipe.sh %s"
 export LESS=' -R '
+
+# more env variables
+export PGDATA=/usr/local/var/postgres
 
 # enable forward incremental search by disabling XON/XOFF
 stty -ixon
@@ -23,18 +28,22 @@ stty -ixon
 # this must be modified to source all the files in the plugins directory
 # source ~/.config/ranger/plugins/bash_automatic_cd.sh
 
+set -o vi
+
 # aliases
-alias l='ls'
 alias ls='ls -Gp'
 alias la='ls -a'
-alias lv='l -1'
-alias ll='l -l'
+alias lv='ls -1'
+alias ll='la -lh'
+
+alias dudu='du -hs | sort -hr | head -n 5'
 
 alias grep='grep --colour'
-alias j=jobs
-alias f=fg
+alias jj=jobs
 alias x=clear
-alias h=hostname
+alias hh=hostname
+
+alias calt='cal | grep --before-context 6 --after-context 6 --color -e " $(date +%e)" -e "^$(date +%e)"'
 
 # tmux
 alias ta="tmux -2 attach -t"
@@ -91,4 +100,3 @@ wiki() { dig +short txt $1.wp.dg.cx | fold -sw70 | less; }
 
 # go to root of current project/task, which is read from $PROJROOT
 cdr() { cd $PROJROOT; }
-
