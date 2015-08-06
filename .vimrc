@@ -29,7 +29,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'rking/ag.vim'
 " Plugin 'mattn/gist-vim'
 Plugin 'rstacruz/sparkup'
-Plugin 'ton/vim-bufsurf'
+" Plugin 'ton/vim-bufsurf'
 " Plugin 'maksimr/vim-jsbeautify'
 " Plugin 'einars/js-beautify'
 " Plugin 'garbas/vim-snipmate'
@@ -37,11 +37,11 @@ Plugin 'ton/vim-bufsurf'
 " Plugin 'joonty/vim-taggatron'
 " Plugin 'Shougo/neocomplcache.vim'
 " Plugin 'joonty/vim-sauce'
-Plugin 'fatih/vim-go'
+" Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-rails'
+" Plugin 'tpope/vim-rails'
 Plugin 'othree/html5.vim'
 Plugin 'nanotech/jellybeans.vim'
 
@@ -99,6 +99,8 @@ let g:NERDTreeWinPos="right"
 let tlist_php_settings='php;f:function' 
 let g:DisableAutoPHPFolding = 1
 
+let g:ftplugin_sql_omni_key = '<C-l>'
+
 " let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
 "                       \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
 
@@ -148,8 +150,8 @@ map <leader>t :TagbarToggle<CR>
 
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
-" let g:tagbar_autoclose = 1
-let g:tagbar_top_align = 1
+let g:tagbar_autoclose = 0
+let g:tagbar_top_align = 1 " only available in my version of tagbar
 
 let g:vdebug_keymap = {
 \    "run" : "<leader>d",

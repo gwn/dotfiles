@@ -40,6 +40,7 @@ dump() { echo "$output"; }
 trim() { head -n "$maxln"; }
 
 # wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
+# highlight() { command highlight "$@"; test $? = 0 -o $? = 141; }
 highlight() { command highlight "$@"; test $? = 0 -o $? = 141; }
 
 case "$extension" in
