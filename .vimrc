@@ -8,7 +8,7 @@ call vundle#begin()
 
 " Plugin list
 Plugin 'gmarik/vundle'
-" Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 Plugin 'joonty/vdebug'
 Plugin 'ledger/vim-ledger'
 Plugin 'godlygeek/tabular'
@@ -44,6 +44,7 @@ Plugin 'tpope/vim-obsession'
 " Plugin 'tpope/vim-rails'
 Plugin 'othree/html5.vim'
 Plugin 'nanotech/jellybeans.vim'
+" Plugin 'chrisbra/csv.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -138,11 +139,12 @@ map <leader>h :set hlsearch!<CR>
 map <leader>8 gggqGgg
 map <C-l> :BufSurfForward<CR>
 map <C-h> :BufSurfBack<CR>
+nmap <leader>i :!clear; bash %<CR>
 cmap w!! w !sudo tee %
 
 " plugin mappings
-map <leader>n :NumbersToggle<CR>
-" map <leader>n :NERDTreeToggle<CR>
+" map <leader>n :NumbersToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>r :<C-U>RangerChooser<CR>
 
 " Tagbar
@@ -154,20 +156,41 @@ let g:tagbar_autoclose = 0
 let g:tagbar_top_align = 1 " only available in my version of tagbar
 
 let g:vdebug_keymap = {
-\    "run" : "<leader>d",
-\    "run_to_cursor" : "<leader>r",
-\    "step_over" : "<C-o>",
-\    "step_into" : "<C-i>",
-\    "step_out" : "<C-u>",
-\    "close" : "<leader>C",
-\    "detach" : "<leader>D",
-\    "set_breakpoint" : "<leader>b",
-\    "get_context" : "<leader>c",
-\    "eval_under_cursor" : "<leader>E",
-\    "eval_visual" : "<Leader>e",
+\    "run"              : "<leader>d",
+\    "run_to_cursor"    : "<leader>r",
+\    "step_over"        : "<C-o>",
+\    "step_into"        : "<C-i>",
+\    "step_out"         : "<C-u>",
+\    "close"            : "<leader>C",
+\    "detach"           : "<leader>D",
+\    "set_breakpoint"   : "<leader>b",
+\    "get_context"      : "<leader>c",
+\    "eval_under_cursor": "<leader>E",
+\    "eval_visual"      : "<Leader>e",
 \}
 
-let g:vdebug_features = { 'max_children': 256 }
+let g:vdebug_options= {
+\    "port"              : 9000,
+\    "server"            : 'localhost',
+\    "timeout"           : 60,
+\    "on_close"          : 'detach',
+\    "break_on_open"     : 1,
+\    "ide_key"           : '',
+\    "path_maps"         : {},
+\    "debug_window_level": 0,
+\    "debug_file_level"  : 0,
+\    "debug_file"        : "",
+\    "watch_window_style": 'expanded',
+\    "marker_default"    : '⬦',
+\    "marker_closed_tree": '▸',
+\    "marker_open_tree"  : '▾'
+\}
+
+let g:vdebug_features = {
+\    'max_children': 128,
+\    'max_data'    : 512,
+\    'max_depth'   : 3
+\}
 
 map <leader>e :VdebugEval 
 
@@ -181,6 +204,7 @@ endif
 " php helpers
 :autocmd FileType php noremap <leader>m :w!<CR>:!/usr/bin/php %<CR>
 :autocmd FileType php noremap <leader>l :!/usr/bin/php -l %<CR>
+:autocmd FileType markdown set textwidth=72
 
 """ end mappings """
 

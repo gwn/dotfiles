@@ -36,7 +36,7 @@ alias la='ls -a'
 alias lv='ls -1'
 alias ll='la -lh'
 
-alias dudu='du -hs | sort -hr | head -n 5'
+alias dudu='du -hs * | sort -hr | head -n 5'
 
 alias grep='grep --colour'
 alias jj=jobs
