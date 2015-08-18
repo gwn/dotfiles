@@ -31,7 +31,7 @@ stty -ixon
 set -o vi
 
 # aliases
-alias ls='ls -Gp'
+alias ls='ls -p'
 alias la='ls -a'
 alias lv='ls -1'
 alias ll='la -lh'
