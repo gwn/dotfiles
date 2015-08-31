@@ -45,6 +45,9 @@ Plugin 'tpope/vim-obsession'
 Plugin 'othree/html5.vim'
 Plugin 'nanotech/jellybeans.vim'
 " Plugin 'chrisbra/csv.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 
 call vundle#end()
 filetype plugin indent on
@@ -58,7 +61,8 @@ set ruler
 set backspace=indent,eol,start
 set nowrap
 set hidden " allow unsaved buffers in background
-set nonumber
+set number
+set relativenumber
 set cursorline
 set expandtab
 set autoindent
@@ -132,11 +136,13 @@ let g:UltiSnipsExpandTrigger="<C-s>"
 """ mappings """
 map <leader>f :echo @%<CR> " echo current filename
 map <leader>c :call ToggleColorColumn()<CR> " put a gray column at col 80
-map <leader>u :set number!<CR>
+map <leader>u :set relativenumber!<CR>
 map <leader>w :set wrap!<CR>
 map <leader>r :set ruler!<CR>
 map <leader>h :set hlsearch!<CR>
 map <leader>8 gggqGgg
+vmap <leader>j :!jq .<CR>
+vmap <leader>sj y:vsp x<CR><C-W><C-R>p:%!jq .<CR>:se ft=json<CR>
 map <C-l> :BufSurfForward<CR>
 map <C-h> :BufSurfBack<CR>
 nmap <leader>i :!clear; bash %<CR>
