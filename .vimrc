@@ -163,20 +163,22 @@ let g:tagbar_top_align = 1 " only available in my version of tagbar
 
 let g:vdebug_keymap = {
 \    "run"              : "<leader>d",
-\    "run_to_cursor"    : "<leader>r",
-\    "step_over"        : "<C-o>",
-\    "step_into"        : "<C-i>",
-\    "step_out"         : "<C-u>",
-\    "close"            : "<leader>C",
-\    "detach"           : "<leader>D",
+\    "run_to_cursor"    : "t",
+\    "step_over"        : "n",
+\    "step_into"        : "s",
+\    "step_out"         : "f",
+\    "close"            : "q",
+\    "detach"           : "d",
 \    "set_breakpoint"   : "<leader>b",
-\    "get_context"      : "<leader>c",
+\    "get_context"      : "c",
 \    "eval_under_cursor": "<leader>E",
-\    "eval_visual"      : "<Leader>e",
+\    "eval_visual"      : "<leader>e",
 \}
 
+nmap <C-x> :VdebugEval 
+
 let g:vdebug_options= {
-\    "port"              : 9000,
+\    "port"              : 9001,
 \    "server"            : 'localhost',
 \    "timeout"           : 60,
 \    "on_close"          : 'detach',
@@ -186,7 +188,7 @@ let g:vdebug_options= {
 \    "debug_window_level": 0,
 \    "debug_file_level"  : 0,
 \    "debug_file"        : "",
-\    "watch_window_style": 'expanded',
+\    "watch_window_style": 'compact',
 \    "marker_default"    : '⬦',
 \    "marker_closed_tree": '▸',
 \    "marker_open_tree"  : '▾'
@@ -197,8 +199,6 @@ let g:vdebug_features = {
 \    'max_data'    : 512,
 \    'max_depth'   : 3
 \}
-
-map <leader>e :VdebugEval 
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
