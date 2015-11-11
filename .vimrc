@@ -195,9 +195,9 @@ let g:vdebug_options= {
 \}
 
 let g:vdebug_features = {
-\    'max_children': 128,
-\    'max_data'    : 512,
-\    'max_depth'   : 3
+\    'max_children': 256,
+\    'max_data'    : 1024,
+\    'max_depth'   : 5
 \}
 
 if exists(":Tabularize")
