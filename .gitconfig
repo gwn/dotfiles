@@ -1,12 +1,33 @@
 [user]
-	name = Ege Avunc
-	email = 
+  name = Ege Avunc
+  email =
 [alias]
-  st  = status
-  cm  = commit
-  br  = branch
-	co = checkout
+  st    = status -s
+  cm    = commit
+  br    = branch
+  co    = checkout
+  logp  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset  %p' --abbrev-commit --date=relative
+  logd  = log --decorate
+  logs  = log --decorate --pretty=short --abbrev-commit
+  logo  = log --oneline --decorate
+  diffc = diff --cached
 [core]
-	editor = /usr/local/bin/vim
+  editor = /usr/bin/vim
 [push]
-	default = simple
+  default = simple
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  local = yellow
+  remote = magenta
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan

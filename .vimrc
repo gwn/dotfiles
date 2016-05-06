@@ -44,10 +44,11 @@ Plugin 'tpope/vim-obsession'
 " Plugin 'tpope/vim-rails'
 Plugin 'othree/html5.vim'
 Plugin 'nanotech/jellybeans.vim'
-" Plugin 'chrisbra/csv.vim'
+Plugin 'chrisbra/csv.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'klen/python-mode'
 
 call vundle#end()
 filetype plugin indent on
@@ -213,6 +214,79 @@ endif
 :autocmd FileType markdown set textwidth=72
 
 """ end mappings """
+
+""" python-mode related settings and mappings """
+let g:pymode = 1
+let g:pymode_options = 1
+let g:pymode_options_max_line_length = 79
+let g:pymode_options_colorcolumn = 1
+let g:pymode_quickfix_minheight = 3
+let g:pymode_quickfix_maxheight = 6
+let g:pymode_indent = 1
+let g:pymode_folding = 1
+let g:pymode_motion = 1
+
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+
+let g:pymode_run = 1
+let g:pymode_run_bind = '<leader>r'
+
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+let g:pymode_breakpoint_cmd = ''
+
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_unmodified = 0
+let g:pymode_lint_on_fly = 0
+let g:pymode_lint_message = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+" let g:pymode_lint_ignore = "E501,W"
+let g:pymode_lint_select = "E501,W0011,W430"
+" let g:pymode_lint_sort = ['E', 'C', 'I']
+let g:pymode_lint_cwindow = 1
+let g:pymode_lint_signs = 1
+
+let g:pymode_rope = 1
+let g:pymode_rope_lookup_project = 0
+" let g:pymode_rope_project_root = ""
+" let g:pymode_rope_ropefolder='.ropeproject'
+
+let g:pymode_rope_show_doc_bind = '<C-c>d'
+let g:pymode_rope_regenerate_on_write = 1
+
+let g:pymode_rope_completion = 1
+let g:pymode_rope_complete_on_dot = 1
+let g:pymode_rope_completion_bind = '<C-Space'
+let g:pymode_rope_autoimport = 0
+" let g:pymode_rope_autoimport_modules = ['os', 'shutil', 'datetime']
+let g:pymode_rope_autoimport_import_after_complete = 0
+
+let g:pymode_rope_goto_definition_bind = '<C-c>g'
+let g:pymode_rope_goto_definition_cmd = 'new'
+
+let g:pymode_rope_organize_imports_bind = '<C-c>ro'
+let g:pymode_rope_autoimport_bind = '<C-c>ra'
+
+let g:pymode_syntax = 1
+let g:pymode_syntax_slow_sync = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_print_as_function = 0
+let g:pymode_syntax_highlight_async_await = g:pymode_syntax_all
+let g:pymode_syntax_highlight_equal_operator = g:pymode_syntax_all
+let g:pymode_syntax_highlight_start_operator = g:pymode_syntax_all
+let g:pymode_syntax_highlight_self = g:pymode_syntax_all
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+let g:pymode_syntax_string_formatting = g:pymode_syntax_all
+let g:pymode_syntax_string_format = g:pymode_syntax_all
+let g:pymode_syntax_string_templates = g:pymode_syntax_all
+let g:pymode_syntax_doctests = g:pymode_syntax_all
+let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
+let g:pymode_syntax_builtin_types = g:pymode_syntax_all
+let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
+let g:pymode_syntax_docstrigs = g:pymode_syntax_all
 
 
 """ helpers """
