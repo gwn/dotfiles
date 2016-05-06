@@ -6,6 +6,8 @@ function last_two_dirs {
 }
 export PS1='$(last_two_dirs)$(__git_ps1 " @%s" | cut -c1-5)\$ '
 
+export MYSQL_PS1='mysql @\h > '
+
 export EDITOR=vim
 
 export PAGER=less
@@ -31,7 +33,7 @@ stty -ixon
 set -o vi
 
 # aliases
-alias ls='ls -p'
+alias ls='ls -p --color'  # replace --color with -G on BSD variants, like OS X
 alias la='ls -a'
 alias lv='ls -1'
 alias ll='la -lh'
