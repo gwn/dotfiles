@@ -1,0 +1,20 @@
+# Show a chart of the git commit logs grouped by hours of day.
+# Requires the "data_hacks" package from PyPI.
+function gittime() {
+  git log --pretty=format:'%ai' | cut -d' ' -f 2 | cut -d':' -f 1 | sort | uniq -c | bar_chart.py -a
+}
+
+# Query Wordnet. Requires the program wn from Wordnet
+function wno() {
+  wn $1 -over | fold -sw70 | less;
+}
+
+# wrapper for the program "cal" with the current day highlighted
+function calt() {
+  cal | \
+  grep --before-context 6 \
+       --after-context 6 \
+       --color \
+       -e " $(date +%e)" \
+       -e "^$(date +%e)"
+}
