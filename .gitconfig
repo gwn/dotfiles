@@ -2,6 +2,7 @@
   name = Ege Avunc
   email =
 [alias]
+  a     = add
   st    = status -s
   cm    = commit
   br    = branch
