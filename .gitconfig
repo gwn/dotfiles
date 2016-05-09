@@ -3,15 +3,17 @@
   email =
 [alias]
   a     = add
-  st    = status -s
+  d     = diff
+  dc    = diff --cached
+  s     = status -s
+  st    = status
   cm    = commit
   br    = branch
   co    = checkout
-  logp  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset  %p' --abbrev-commit --date=relative
-  logd  = log --decorate
-  logs  = log --decorate --pretty=short --abbrev-commit
-  logo  = log --oneline --decorate
-  diffc = diff --cached
+  l     = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset  %p' --abbrev-commit --date=relative
+  ld    = log --decorate
+  ls    = log --decorate --pretty=short --abbrev-commit
+  lo    = log --oneline --decorate
 [core]
   editor = /usr/bin/vim
 [push]
@@ -24,10 +26,10 @@
   local = yellow
   remote = magenta
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+  meta = yellow
+  frag = magenta
+  old = red
+  new = green
 [color "status"]
   added = green
   changed = yellow
