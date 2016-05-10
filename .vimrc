@@ -13,7 +13,7 @@ Plugin 'joonty/vdebug'
 Plugin 'ledger/vim-ledger'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 " Plugin 'spf13/PIV'
 " Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
@@ -109,6 +109,8 @@ let g:ftplugin_sql_omni_key = '<C-l>'
 
 " let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'dir', 'rtscript',
 "                       \ 'undo', 'line', 'changes', 'mixed', 'bookmarkdir']
+
+let g:ctrlp_custom_ignore = '^.*\.pyc$'
 
 
 " syntastic
