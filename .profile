@@ -15,6 +15,7 @@ alias grep='grep --colour'
 alias tmux='tmux -2u'
 alias mysql="EDITOR='vim -c \"se ft=sql\"' mysql"
 alias gitnp='git --no-pager'
+alias csv='csvlook | less -RSFXi'
 
 source $HOME/.profile.extended
 source $HOME/.git-prompt.sh  # git completion
