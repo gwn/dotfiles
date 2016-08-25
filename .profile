@@ -12,9 +12,10 @@ export PAGER='less -RSi'
 alias ls='ls -p --color'  # replace --color with -G on BSD variants, like OS X
 alias dudu='du -hs * | sort -hr | head -5'
 alias grep='grep --colour'
-alias tmux='tmux -2u'
 alias mysql="EDITOR='vim -c \"se ft=sql\"' mysql"
-alias gitnp='git --no-pager'
+alias gi=git
+alias ginp='git --no-pager'
+alias pyg=pygmentize
 alias csv='csvlook | less -RSFXi'
 
 source $HOME/.profile.extended
