@@ -26,3 +26,5 @@ highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Folded ctermfg=4 ctermbg=0
 
 colorscheme jellybeans
+
+au filetype python setl ts=4 sw=4 ai si cinw+=elif,except,finally,def,class
