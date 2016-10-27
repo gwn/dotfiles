@@ -4,7 +4,7 @@ set encoding=utf8
 set ruler
 set backspace=indent,eol,start
 set nowrap
-set hidden " allow unsaved buffers in background
+set hidden
 set cursorline
 set expandtab
 set autoindent
@@ -18,7 +18,6 @@ set fileformats=unix,dos,mac
 set tabstop=2
 set shiftwidth=2
 set nojoinspaces
-" set completeopt=menuone
 
 let mapleader='\'
 
