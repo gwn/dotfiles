@@ -18,6 +18,7 @@ set fileformats=unix,dos,mac
 set tabstop=2
 set shiftwidth=2
 set nojoinspaces
+set textwidth=80
 
 let mapleader='\'
 
