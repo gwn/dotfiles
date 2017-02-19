@@ -1,6 +1,6 @@
 [user]
-  name = Ege Avunc
-  email =
+  name = gwn
+  email = 
 [alias]
   a     = add
   d     = diff
@@ -8,9 +8,11 @@
   s     = status -s
   st    = status
   cm    = commit
+  b     = branch
   br    = branch
   co    = checkout
-  l     = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset  %p' --abbrev-commit --date=relative
+  l     = log
+  ll    = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset  %p' --abbrev-commit --date=relative
   ld    = log --decorate
   ls    = log --decorate --pretty=short --abbrev-commit
   lo    = log --oneline --decorate
@@ -18,6 +20,8 @@
   editor = /usr/bin/vim
 [push]
   default = simple
+[merge]
+  tool = vimdiff
 [color]
   branch = auto
   diff = auto
@@ -34,3 +38,12 @@
   added = green
   changed = yellow
   untracked = cyan
+[pager]
+  log = diff-so-fancy | less --tabs=4 -RFX
+  show = diff-so-fancy | less --tabs=4 -RFX
+  diff = diff-so-fancy | less --tabs=4 -RFX
+[color "diff-highlight"]
+	oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
