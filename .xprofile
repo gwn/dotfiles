@@ -1,0 +1,3 @@
+xset r rate 250 30
+xinput set-prop "PS/2 Generic Mouse" "libinput Button Scrolling Button" 1
+xinput set-prop "PS/2 Generic Mouse" "libinput Accel Speed" 1
