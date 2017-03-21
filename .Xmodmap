@@ -20,19 +20,19 @@ keycode  26 = e E e E
 keycode  27 = r R r R
 keycode  28 = t T t T
 keycode  29 = y Y y Y
-keycode  30 = u U u U
-keycode  31 = i I i I
-keycode  32 = o O o O
+keycode  30 = u U U00FC U00DC
+keycode  31 = i I U0131 U0130
+keycode  32 = o O U00F6 U00D6
 keycode  33 = p P p P
 keycode  34 = bracketleft braceleft bracketleft braceleft
 keycode  35 = bracketright braceright bracketright braceright
 keycode  36 = Return NoSymbol Return
 keycode  37 = Control_L NoSymbol Control_L
 keycode  38 = a A a A
-keycode  39 = s S s S
+keycode  39 = s S U015F U015E
 keycode  40 = d D d D
 keycode  41 = f F f F
-keycode  42 = g G g G
+keycode  42 = g G U011F U011E
 keycode  43 = h H h H
 keycode  44 = j J j J
 keycode  45 = k K k K
@@ -44,7 +44,7 @@ keycode  50 = Shift_L NoSymbol Shift_L
 keycode  51 = backslash bar backslash bar
 keycode  52 = z Z z Z
 keycode  53 = x X x X
-keycode  54 = c C c C
+keycode  54 = c C U00E7 U00C7
 keycode  55 = v V v V
 keycode  56 = b B b B
 keycode  57 = n N n N
@@ -247,19 +247,22 @@ keycode 253 =
 keycode 254 =
 keycode 255 =
 
-
-! updates
+clear      lock
 clear   control
 clear      mod1
 clear      mod4
+clear      mod5
 
-keycode 37  = Super_L
-keycode 133 = Alt_L
-keycode 64  = Control_L
-keycode 108 = Control_R
-keycode 135 = Alt_R
-keycode 105 = Menu
+keycode   9 = Caps_Lock NoSymbol Caps_Lock
+keycode  37 = Super_L NoSymbol Super_L
+keycode  64 = Control_L NoSymbol Control_L
+keycode  66 = Escape NoSymbol Escape
+keycode 105 = Super_R NoSymbol Super_R
+keycode 108 = Control_R NoSymbol Control_R
+keycode 133 = Alt_L NoSymbol Alt_L
+keycode 135 = Mode_switch NoSymbol Mode_switch
 
 add     control = Control_L Control_R
 add        mod1 = Alt_L Alt_R Meta_L
 add        mod4 = Super_L Super_R
+add        mod5 = Mode_switch ISO_Level3_Shift
