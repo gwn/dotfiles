@@ -1,0 +1,21 @@
+[submodule ".vim/pack/gwn/opt/jellybeans.vim"]
+	path = .vim/pack/gwn/opt/jellybeans.vim
+	url = https://github.com/nanotech/jellybeans.vim
+[submodule ".vim/pack/gwn/start/jellybeans.vim"]
+	path = .vim/pack/gwn/start/jellybeans.vim
+	url = https://github.com/nanotech/jellybeans.vim
+[submodule ".vim/pack/gwn/start/tagbar"]
+	path = .vim/pack/gwn/start/tagbar
+	url = https://github.com/majutsushi/tagbar
+[submodule ".vim/pack/gwn/start/vim-javascript"]
+	path = .vim/pack/gwn/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule ".vim/pack/gwn/start/vim-jsx"]
+	path = .vim/pack/gwn/start/vim-jsx
+	url = https://github.com/mxw/vim-jsx
+[submodule ".vim/pack/gwn/start/tern_for_vim"]
+	path = .vim/pack/gwn/start/tern_for_vim
+	url = https://github.com/ternjs/tern_for_vim
+[submodule ".vim/pack/gwn/start/jedi-vim"]
+	path = .vim/pack/gwn/start/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim
