@@ -3,21 +3,20 @@
 #define CURSR " > "
 #define EMPTY "   "
 
-int mtimeorder  = 0; /* Set to 1 to sort by time modified */
-int idletimeout = 0; /* Screensaver timeout in seconds, 0 to disable */
-int showhidden  = 0; /* Set to 1 to show hidden files by default */
-char *idlecmd   = "rain"; /* The screensaver program */
+int mtimeorder  = 1; /* Set to 1 to sort by time modified */
+int idletimeout = 60; /* Screensaver timeout in seconds, 0 to disable */
+int showhidden  = 1; /* Set to 1 to show hidden files by default */
+char *idlecmd   = "cmatrix"; /* The screensaver program. Default was "rain" */
 
 struct assoc assocs[] = {
-	{ "\\.(avi|mp4|mkv|mp3|ogg|flac|mov)$", "mpv" },
+	{ "\\.(avi|mp4|mkv|mp3|ogg|flac|mov)$", "ffplay" },
 	{ "\\.(doc|docx|odt)$", "lowriter" },
 	{ "\\.(xls|xlsx)$", "localc" },
 	{ "\\.(ppt|pptx)$", "loimpress" },
-	{ "\\.(ppt|pptx)$", "loimpress" },
 	{ "\\.(odg)$", "lodraw" },
 	{ "\\.(png|jpg|jpeg|gif)$", "sxiv" },
-	{ "\\.(html|svg)$", "chromium" },
-	{ "\\.pdf$", "mupdf" },
+	{ "\\.(html|svg)$", "surf" },
+	{ "\\.pdf$", "zathura" },
 	{ "\\.sh$", "sh" },
 	{ ".", "less" },
 };
