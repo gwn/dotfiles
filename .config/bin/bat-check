@@ -1,0 +1,11 @@
+capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+
+test "$capacity" -gt 7 && exit 0
+
+curvol=$(amixer get Master | awk '$0~/%/{print $5}' | tr -d '[]%' | head -1)
+
+test "$curvol" -lt 50 && amixer set Master 50%
+
+ding & sleep 0.2 && ding & sleep 0.4 && ding
+
+test "$curvol" -lt 50 && amixer set Master "$curvol%"

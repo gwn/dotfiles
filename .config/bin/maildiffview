@@ -1,0 +1,1 @@
+parsemail.js text | pygmentize -l diff | less --tabs=4 -RF
