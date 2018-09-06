@@ -1,3 +1,14 @@
-xset r rate 250 30
-xinput set-prop "PS/2 Generic Mouse" "libinput Accel Speed" 1
-xinput set-prop "PS/2 Generic Mouse" "libinput Middle Emulation Enabled" 1
+#!/bin/sh
+
+export EDITOR=vim
+
+xset r rate 350 30
+
+# libinput config (comment out if using synaptics driver)
+# xinput set-prop  12 276 1
+# xinput set-prop 12 276 1
+# xinput set-prop 12 288 0.7
+
+# Fujitsu config
+# xinput set-prop "PS/2 Generic Mouse" "libinput Accel Speed" 1
+# xinput set-prop "PS/2 Generic Mouse" "libinput Middle Emulation Enabled" 1
