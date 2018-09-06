@@ -1,37 +1,19 @@
 [general]
-accounts = personal
+accounts = someaccount
 ui = ttyui
 
-[Account personal]
-localrepository = personal-local
-remoterepository = personal-remote
-status_backend = sqlite
+[Account uservision]
+localrepository = someaccount-local
+remoterepository = someaccount-remote
 
-[Repository personal-local]
+[Repository someaccount-local]
 type = Maildir
-localfolders = ~/mail/personal
-# Spaces in pathname are bad. Lets use `archive` which is a simple word
-# Besides, we only need `All Mail` folder. 
-# Sup would manage mails on its own.
-# If your GMail language setting is not English, you can execute 
-# `offlineimap --info` to find out the name of folder which is 
-# translated and encoded after your account is configured.
-nametrans = lambda folder: {'archive': '[Gmail]/All Mail',
-                            }.get(folder, folder)
+localfolders = ~/mail/someaccount
 
-[Repository personal-remote]
-# IMAP with hardcoded GMail config
-type = Gmail
-# The path of ca-certfile might be different on your system.
+[Repository someaccount-remote]
+type = IMAP
+remotehost = imap.foo.com
+remoteport = 993
+remoteuser = bob@foo.com
+remotepass = somecoolpassword
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-# Remember that GMail requires full mail address as username
-remoteuser = <my-gmail-address>
-remotepass = <pass>
-nametrans = lambda folder: {'[Gmail]/All Mail': 'archive',
-                            }.get(folder, folder)
-# folderfilter = lambda folder: folder == '[Gmail]/All Mail'
-folderfilter = lambda folder: folder == 'INBOX'
-# Or, if you have a lot of mail and don't want to wait for a long time before
-# using sup, you can archive all your old mails on Gmail and only sync the
-# inbox with the following line replacing the previous `folderfilter` line:
-# folderfilter = lambda folder: folder == 'INBOX'

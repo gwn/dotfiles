@@ -1,0 +1,24 @@
+defaults
+tls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+delivery maildir ~/mail/someaccount
+
+uidls_file ~/.local/share/%U_at_%H
+
+account someaccount
+
+host pop.foo.com
+port 995
+# tls_starttls off
+
+auth user
+
+user bob@foo.com
+password somepassword
+
+keep on
+
+filter    if [ "`grep "^X-Spam-Status: Yes"`" ]; then exit 1; else exit 0; fi
+
+account default : someaccount
