@@ -1,2 +1,21 @@
-text/html; firefox -new-tab %s & sleep 5; test=........
-# text/html; elinks -default-mime-type text/html %s; needsterminal;
+
+### 
+### Begin Red Hat Mailcap
+###
+
+audio/*; /usr/bin/xdg-open %s
+
+image/*; /usr/bin/xdg-open %s
+
+application/msword; /usr/bin/xdg-open %s
+application/pdf; /usr/bin/xdg-open %s
+application/postscript ; /usr/bin/xdg-open %s
+
+# text/html; /usr/bin/xdg-open %s ; copiousoutput
+text/html;  w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
+
+application/vnd.openxmlformats-officedocument.presentationml.presentation; /usr/bin/loimpress %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; /usr/bin/lowriter %s
+application/vnd.ms-excel; /usr/bin/localc %s
+
+application/pdf; /usr/bin/zathura %s
