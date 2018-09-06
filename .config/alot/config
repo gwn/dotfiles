@@ -1,0 +1,14 @@
+terminal_cmd = "st -w"
+
+[accounts]
+    [[uv]]
+        realname = Bob
+        address = bob@foo.com
+        sendmail_command = msmtp --account=uv -t
+        sent_box = maildir:///home/bob/mail/someaccount/sent
+        draft_box = maildir:///home/bob/mail/someaccount/drafts
+
+[bindings]
+    [[thread]]
+        D = pipeto maildiffview
+        S = pipeto mailhtmlview
