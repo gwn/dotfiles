@@ -1,1 +1,0 @@
-tabbed -r 2 -f -p -1 st -w x noice $HOME/projects/$1

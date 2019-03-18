@@ -1,1 +1,0 @@
-tabbed -r 2 -f surf -e x -i -z 1.25 $HOME/search.html
