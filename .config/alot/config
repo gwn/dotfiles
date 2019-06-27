@@ -1,12 +1,29 @@
 terminal_cmd = "st -w"
 
 [accounts]
+    [[personal]]
+        realname = Ege Avunc
+        address = egeavunc@gmail.com
+        sendmail_command = msmtp --account=personal -t
+        sent_box = maildir:///home/gwn/mail/personal/sent
+        draft_box = maildir:///home/gwn/mail/personal/drafts
+
     [[uv]]
-        realname = Bob
-        address = bob@foo.com
+        realname = Ege Avunc
+        address = ege@user.vision
         sendmail_command = msmtp --account=uv -t
-        sent_box = maildir:///home/bob/mail/someaccount/sent
-        draft_box = maildir:///home/bob/mail/someaccount/drafts
+        sent_box = maildir:///home/gwn/mail/uv/sent
+        draft_box = maildir:///home/gwn/mail/uv/drafts
+
+    [[dev]]
+        realname = gwn
+        address = dev@gwn.wtf
+        sendmail_command = msmtp --account=dev -t
+        sent_box = maildir:///home/gwn/mail/dev/sent
+        draft_box = maildir:///home/gwn/mail/dev/drafts
+        gpg_key = 8A3C11286C1447C608E84CDCF8B7B0C33655819B
+        sign_by_default = True
+
 
 [bindings]
     [[thread]]
