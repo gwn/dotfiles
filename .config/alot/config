@@ -8,6 +8,12 @@ terminal_cmd = "st -w"
         sent_box = maildir:///home/gwn/mail/personal/sent
         draft_box = maildir:///home/gwn/mail/personal/drafts
 
+        [[[abook]]]
+            type = shellcommand
+            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:egeavunc@gmail.com'
+            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            shellcommand_external_filtering = False
+
     [[uv]]
         realname = Ege Avunc
         address = ege@user.vision
@@ -23,6 +29,12 @@ terminal_cmd = "st -w"
         draft_box = maildir:///home/gwn/mail/dev/drafts
         gpg_key = 8A3C11286C1447C608E84CDCF8B7B0C33655819B
         sign_by_default = True
+
+        [[[abook]]]
+            type = shellcommand
+            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:dev@gwn.wtf'
+            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            shellcommand_external_filtering = False
 
 
 [bindings]
