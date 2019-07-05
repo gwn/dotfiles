@@ -40,4 +40,4 @@ terminal_cmd = "st -w"
 [bindings]
     [[thread]]
         u = pipeto urlscan
-        S = pipeto mailhtmlview
+        D = pipeto maildiffview

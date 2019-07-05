@@ -3,6 +3,8 @@
 export EDITOR=vim
 
 xset r rate 350 30
+xinput disable "SynPS/2 Synaptics TouchPad"
+unclutter -b
 
 # libinput config (comment out if using synaptics driver)
 # xinput set-prop  12 276 1

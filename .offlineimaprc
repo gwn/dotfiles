@@ -1,19 +1,55 @@
 [general]
-accounts = someaccount
-ui = ttyui
+accounts = personal,dev
+ui = basic
+pythonfile = ~/.offlineimap.py
+
+[Account personal]
+localrepository = personal-local
+remoterepository = personal-remote
+
+[Repository personal-local]
+type = Maildir
+localfolders = ~/mail/personal
+
+[Repository personal-remote]
+type = IMAP
+remotehost = imap.gmail.com
+remoteport = 993
+remoteusereval = getpass('mail/personal', line=2)
+remotepasseval = getpass('mail/personal', line=1)
+ssl_version = tls1_2
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+folderfilter = lambda folder: folder == 'INBOX'
 
 [Account uservision]
-localrepository = someaccount-local
-remoterepository = someaccount-remote
+localrepository = uservision-local
+remoterepository = uservision-remote
 
-[Repository someaccount-local]
+[Repository uservision-local]
 type = Maildir
-localfolders = ~/mail/someaccount
+localfolders = ~/mail/uservision
 
-[Repository someaccount-remote]
+[Repository uservision-remote]
 type = IMAP
-remotehost = imap.foo.com
+remotehost = imappro.zoho.com
 remoteport = 993
-remoteuser = bob@foo.com
-remotepass = somecoolpassword
+remoteusereval = getpass('mail/uservision', line=2)
+remotepasseval = getpass('mail/uservision', line=1)
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Account dev]
+localrepository = dev-local
+remoterepository = dev-remote
+
+[Repository dev-local]
+type = Maildir
+localfolders = ~/mail/dev
+
+[Repository dev-remote]
+type = IMAP
+remotehost = imap.yandex.com
+remoteport = 993
+remoteusereval = getpass('mail/dev', line=2)
+remotepasseval = getpass('mail/dev', line=1)
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+folderfilter = lambda folder: folder == 'INBOX'

@@ -1,21 +1,19 @@
+image/gif; /usr/bin/sxiv %s
+image/png; /usr/bin/sxiv %s
+image/jpeg; /usr/bin/sxiv %s
+image/*; /usr/bin/sxiv %s
 
-### 
-### Begin Red Hat Mailcap
-###
+audio/*; /usr/bin/mpv %s
+video/*; /usr/bin/mpv %s
 
-audio/*; /usr/bin/xdg-open %s
-
-image/*; /usr/bin/xdg-open %s
-
-application/msword; /usr/bin/xdg-open %s
-application/pdf; /usr/bin/xdg-open %s
+application/msword; /usr/bin/lowriter %s
+application/pdf; /usr/bin/zathura %s
 application/postscript ; /usr/bin/xdg-open %s
 
-# text/html; /usr/bin/xdg-open %s ; copiousoutput
 text/html;  w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
 
-application/vnd.openxmlformats-officedocument.presentationml.presentation; /usr/bin/loimpress %s
-application/vnd.openxmlformats-officedocument.wordprocessingml.document; /usr/bin/lowriter %s
-application/vnd.ms-excel; /usr/bin/localc %s
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; localc %s
+application/vnd.ms-excel; localc %s
 
-application/pdf; /usr/bin/zathura %s
+text/calendar; mutt-ics; copiousoutput
+application/ics; mutt-ics; copiousoutput

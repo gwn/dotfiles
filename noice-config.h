@@ -9,7 +9,7 @@ int showhidden  = 1; /* Set to 1 to show hidden files by default */
 char *idlecmd   = "cmatrix"; /* The screensaver program. Default was "rain" */
 
 struct assoc assocs[] = {
-	{ "\\.(avi|mp4|mkv|mp3|ogg|flac|mov)$", "ffplay" },
+	{ "\\.(avi|mp4|mkv|mp3|ogg|flac|mov)$", "mpv" },
 	{ "\\.(doc|docx|odt)$", "lowriter" },
 	{ "\\.(xls|xlsx)$", "localc" },
 	{ "\\.(ppt|pptx)$", "loimpress" },
