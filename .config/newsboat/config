@@ -1,0 +1,15 @@
+browser firefox-developer-edition
+player ffplay
+
+bind-key k up
+bind-key j down
+bind-key ^B pageup
+bind-key ^F pagedown
+
+color listnormal        white black
+color listnormal_unread white black bold
+color listfocus         white color237
+color listfocus_unread  white color237 bold
+color info              color39 black
+color background        white black
+color article           white black
