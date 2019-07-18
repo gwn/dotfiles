@@ -1,9 +1,9 @@
 [database]
-path=/home/gwn/mail/personal
+path=/home/gwn/mail/dev
 
 [user]
-name=Ege Avunc
-primary_email=egeavunc@gmail.com
+name=gwn
+primary_email=dev@gwn.wtf
 
 [new]
 tags=unread;inbox;
