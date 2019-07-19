@@ -5,6 +5,7 @@ set -o vi
 test $TERM = linux && . $HOME/.env
 
 alias sudo="sudo -E"
+alias info='info --vi-keys'
 alias ls="ls -p"
 alias gi=git
 alias grep="grep --color=auto"
@@ -19,6 +20,6 @@ alias t2="tree -L 2"
 alias t3="tree -L 3"
 alias diary="$EDITOR $HOME/docs/diary/$(date --date='-6 hours' +%F).txt"
 
-nmconf() { # switch to given notmuch config
+nmconf() {
     export NOTMUCH_CONFIG=$HOME/.notmuch-config.$1
 }

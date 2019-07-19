@@ -42,3 +42,4 @@ terminal_cmd = "st -w"
         u = pipeto 'urlscan -c -H'
         h = pipeto mailhtmlview
         D = pipeto maildiffview
+        r = reply --all
