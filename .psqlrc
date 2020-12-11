@@ -1,0 +1,3 @@
+\setenv PAGER 'less -SX -#7'
+\timing on
+\set HISTSIZE 100000
