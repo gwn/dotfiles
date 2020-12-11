@@ -1,0 +1,74 @@
+Create Both  # Automatically create missing mailboxes
+Expunge Both
+MaxMessages 1000
+
+
+IMAPAccount gg
+Host imap.gmail.com
+User egeavunc@gmail.com
+PassCmd "pass mail/google"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gg-remote
+Account gg
+
+MaildirStore gg-local
+SubFolders Verbatim
+Path ~/mail/gg/  # The trailing "/" is important
+Inbox ~/mail/gg/Inbox
+
+Channel gg
+Master :gg-remote:
+Slave :gg-local:
+Patterns INBOX "[Gmail]/Sent Mail" "[Gmail]/All Mail" "[Gmail]/Drafts"
+ExpireUnread yes
+SyncState *  # Save the synchronization state files in the relevant directory
+
+
+
+IMAPAccount dev
+Host imap.yandex.com
+User dev@gwn.wtf
+PassCmd "pass mail/dev"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore dev-remote
+Account dev
+
+MaildirStore dev-local
+SubFolders Verbatim
+Path ~/mail/dev/  # The trailing "/" is important
+Inbox ~/mail/dev/Inbox
+
+Channel dev
+Master :dev-remote:
+Slave :dev-local:
+Patterns INBOX Archive Drafts Sent
+ExpireUnread yes
+SyncState *  # Save the synchronization state files in the relevant directory
+
+
+
+IMAPAccount me
+Host imap.yandex.com
+User me@gwn.wtf
+PassCmd "pass mail/me"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore me-remote
+Account me
+
+MaildirStore me-local
+SubFolders Verbatim
+Path ~/mail/me/  # The trailing "/" is important
+Inbox ~/mail/me/Inbox
+
+Channel me
+Master :me-remote:
+Slave :me-local:
+Patterns INBOX Drafts Sent
+ExpireUnread yes
+SyncState *  # Save the synchronization state files in the relevant directory

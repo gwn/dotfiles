@@ -1,0 +1,56 @@
+{
+    "accounts": {
+        "gg": {
+            "name": "Ege Avunc",
+            "email": "egeavunc@gmail.com",
+            "sendmail": "msmtp --read-envelope-from -i -t --account=gg",
+            "save_sent": "true",
+            "save_sent_to": "/home/gwn/mail/gg/[Gmail]/Sent Mail/cur",
+            "save_drafts_to": "/home/gwn/mail/gg/[Gmail]/Drafts/cur"
+        },
+        "dev": {
+            "name": "gwn",
+            "email": "dev@gwn.wtf",
+            "sendmail": "msmtp --read-envelope-from -i -t --account=dev",
+            "always_gpg_sign": true,
+            "gpgkey": "1BEA3B99A16020C3571F5ABB486513F46C66EF31",
+            "save_sent": "true",
+            "save_sent_to": "/home/gwn/mail/dev/Sent/cur",
+            "save_drafts_to": "/home/gwn/mail/dev/Drafts/cur"
+        },
+        "me": {
+            "name": "gwn",
+            "email": "me@gwn.wtf",
+            "sendmail": "msmtp --read-envelope-from -i -t --account=me",
+            "always_gpg_sign": true,
+            "gpgkey": "BF6AFA5BFCF53894CA7B64E941D82BB4530203A4",
+            "save_sent": "true",
+            "save_sent_to": "/home/gwn/mail/me/Sent/cur",
+            "save_drafts_to": "/home/gwn/mail/me/Drafts/cur"
+        }
+    },
+    "thread_view": {
+        "preferred_type": "plain",
+        "gravatar": {"enable": false}
+    },
+    "editor": {
+        "cmd": "st -w %3 -e vim %1",
+        "markdown_processor": "lowdown"
+    },
+    "mail": {
+        "sent_tags": "",
+        "send_delay": 3,
+        "format_flowed": true
+    },
+    "poll": {
+        "interval": "0"
+    },
+    "startup": {
+        "queries": {
+            "inbox": "folder:Inbox",
+            "sent": "folder:\"[Gmail]/Sent Mail\" or folder:Sent",
+            "drafts": "folder:\"[Gmail]/Drafts\" or folder:Drafts",
+            "archive": "folder:\"[Gmail]/All Mail\" or folder:Archive"
+        }
+    }
+}

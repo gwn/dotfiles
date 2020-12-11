@@ -1,0 +1,59 @@
+#!/usr/bin/env python2
+
+from sys import argv
+from subprocess import check_output
+from os.path import dirname, basename
+from os import listdir, rename, remove
+from shutil import copyfile
+from re import sub
+
+
+targetFilesRaw = check_output(
+    'notmuch search --output=files thread:' + argv[1],
+    shell=True
+)
+
+targetFiles = targetFilesRaw.strip('\n').split('\n')
+
+mailRoot = dirname(targetFiles[0]) + '/../..'
+
+if '[Gmail]' in mailRoot:
+    mailRoot = mailRoot + '/..'
+
+op = 'archive' if 'inbox' in targetFiles[0].lower() else 'unarchive'
+
+prov = 'gmail' if  '[Gmail]' in listdir(mailRoot) else 'nonGmail'
+
+targetDirPattern = 'archive' if op == 'archive' else 'inbox'
+
+if prov != 'gmail' or op != 'archive':
+    moveTo = mailRoot + '/' + [f for f in listdir(mailRoot) if targetDirPattern in f.lower()][0] + '/cur'
+else:
+    moveTo = None
+
+if op == 'archive' and prov == 'gmail':
+    targetFiles = [f for f in targetFiles if 'inbox' in f.lower()]
+
+
+print 'targetFiles:\n' + '\n'.join(targetFiles) + '\n'
+print 'mailRoot: ' + mailRoot
+print 'op: ' + op
+print 'prov: ' + prov
+print 'targetDirPattern: ' + targetDirPattern
+print 'moveTo: ' + str(moveTo)
+
+
+for f in targetFiles:
+    targetNameUIDStripped = sub(',U=\d+', '', basename(f))
+
+    if prov == 'nonGmail':
+        rename(f, moveTo + '/' + targetNameUIDStripped)
+
+    elif op == 'archive':
+        remove(f)
+
+    elif op == 'unarchive':
+        copyfile(f, moveTo + '/' + targetNameUIDStripped)
+
+
+print check_output('notmuch new', shell=True)

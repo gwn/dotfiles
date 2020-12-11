@@ -1,0 +1,1 @@
+thread_index.run(hooks::toggle-archive %1, hooks::toggle-archive %1)=a
