@@ -1,4 +1,4 @@
-browser firefox-developer-edition
+browser chromium
 player ffplay
 
 bind-key k up
