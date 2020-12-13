@@ -4,13 +4,17 @@ set -o vi
 
 test $TERM = linux && . $HOME/.env
 
-alias sudo="sudo -E"
+alias sudo="sudo "
+# https://askubuntu.com/a/22043
+# https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Aliases
+
+alias e="vim \`fzf\`"
+alias stl="systemctl"
+alias jtl="journalctl"
 alias info='info --vi-keys'
 alias ls="ls -p"
-alias gi=git
+alias dk=docker
 alias grep="grep --color=auto"
-alias bat="cat /sys/class/power_supply/BAT0/capacity"
-alias batstat="cat /sys/class/power_supply/BAT0/status"
 alias zth=zathura
 alias pyg=pygmentize
 alias news=newsboat
@@ -19,7 +23,13 @@ alias t="tree"
 alias t2="tree -L 2"
 alias t3="tree -L 3"
 alias diary="$EDITOR $HOME/docs/diary/$(date --date='-6 hours' +%F).txt"
+alias lstypes='ls | rev | cut -d. -f1 | rev | sort | uniq -c | sort -nr'
+alias b=bitcoin-cli
+alias br='bitcoin-cli -regtest'
+alias gi=git
 
-nmconf() {
-    export NOTMUCH_CONFIG=$HOME/.notmuch-config.$1
-}
+gitCmd=gi ## default is "git". Useful for aliases
+source /usr/share/git/completion/git-completion.bash
+
+complete -o bashdefault -o default -o nospace -F _git $gitCmd 2>/dev/null \
+    || complete -o default -o nospace -F _git $gitCmd

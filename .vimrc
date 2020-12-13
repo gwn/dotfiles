@@ -1,6 +1,6 @@
 syntax on
 filetype on
-" filetype plugin indent on
+filetype plugin on
 
 se nobackup
 se nowritebackup
@@ -28,6 +28,8 @@ se foldmethod=indent
 se foldlevelstart=99
 se list
 se listchars=tab:<->,trail:@
+se completeopt=menu,menuone,popup
+se splitbelow
 
 let mapleader=" "
 let g:netrw_banner = 0
@@ -36,9 +38,8 @@ let g:jsx_ext_required = 0 " vim-jsx plugin
 let g:jedi#popup_on_dot = 0 " jedi-vim plugin
 " let g:jedi#show_call_signatures = 0
 let g:jedi#smart_auto_mappings = 0
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
-nm <C-j> 2j
-nm <C-k> 2k
 nm <leader>r :se ruler!<CR>
 nm <leader>f za
 nm <leader>F zA
@@ -52,12 +53,16 @@ nm <leader>w :se wrap!<CR>
 
 au filetype javascript nm <C-n> :!node %<CR>
 au filetype javascript nm <C-l> :!npx eslint %<CR>
-au filetype javascript setl ts=4 sw=4
+au filetype javascript,typescript,javascriptreact,typescriptreact setl ts=2 sw=2
+au filetype sh nm <C-l> :!shellcheck %<CR>
+au filetype solidity nm <C-l> :!solium -f %<CR>
+au filetype sql nm <C-l> :!<% sql-lint<CR>
 au filetype python setl ts=4 sw=4 cinw+=elif,except,finally,def,class
 au filetype go setl noexpandtab ts=8 sw=8
 au filetype make setl noexpandtab nolist
 au filetype text,markdown,mail,gitcommit setl nosmartindent textwidth=66
 au VimEnter,BufNewFile,BufRead * if &filetype ==# '' | setl textwidth=66 | endif
+au CompleteDone * pclose
 
 nm <leader>t :TagbarToggle<CR>
 
