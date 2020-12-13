@@ -1,0 +1,9 @@
+#!/bin/sh
+
+ripmime -i - -d /tmp --name-by-type
+
+filename=$(ls -t /tmp | grep 'text-html' | head -1)
+
+mv /tmp/$filename /tmp/$filename.html
+
+surf file:///tmp/$filename.html

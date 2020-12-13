@@ -1,12 +1,13 @@
 terminal_cmd = "st -w"
+initial_command = ""
 
 [accounts]
     [[gg]]
         realname = Ege Avunc
         address = egeavunc@gmail.com
         sendmail_command = msmtp --account=google -t
-        sent_box = maildir:///home/gwn/mail/gg/[Gmail]/Sent Mail/cur
-        draft_box = maildir:///home/gwn/mail/gg/[Gmail]/Drafts/cur
+        sent_box = maildir:///home/gwn/mail/gg/Sent/cur
+        draft_box = maildir:///home/gwn/mail/gg/Drafts/cur
 
         [[[abook]]]
             type = shellcommand
@@ -47,7 +48,6 @@ terminal_cmd = "st -w"
 
 [bindings]
     [[thread]]
-        u = pipeto 'urlscan -c -H'
-        h = pipeto mailhtmlview
+        h = pipeto --background mailhtmlview
         D = pipeto maildiffview
         r = reply --all

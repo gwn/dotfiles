@@ -1,74 +1,70 @@
-Create Both  # Automatically create missing mailboxes
-Expunge Both
 MaxMessages 1000
+Create Both
+Expunge Both
+SyncState *
+CopyArrivalDate yes
 
 
-IMAPAccount gg
-Host imap.gmail.com
-User egeavunc@gmail.com
-PassCmd "pass mail/google"
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-IMAPStore gg-remote
-Account gg
-
-MaildirStore gg-local
-SubFolders Verbatim
-Path ~/mail/gg/  # The trailing "/" is important
-Inbox ~/mail/gg/Inbox
-
-Channel gg
-Master :gg-remote:
-Slave :gg-local:
-Patterns INBOX "[Gmail]/Sent Mail" "[Gmail]/All Mail" "[Gmail]/Drafts"
-ExpireUnread yes
-SyncState *  # Save the synchronization state files in the relevant directory
-
-
-
-IMAPAccount dev
-Host imap.yandex.com
-User dev@gwn.wtf
-PassCmd "pass mail/dev"
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore dev-remote
-Account dev
+    Host imap.yandex.com
+    User dev@gwn.wtf
+    PassCmd "pass mail/dev"
+    SSLType IMAPS
 
 MaildirStore dev-local
-SubFolders Verbatim
-Path ~/mail/dev/  # The trailing "/" is important
-Inbox ~/mail/dev/Inbox
+    Path ~/mail/dev/
+    Inbox ~/mail/dev/Inbox
 
 Channel dev
-Master :dev-remote:
-Slave :dev-local:
-Patterns INBOX Archive Drafts Sent
-ExpireUnread yes
-SyncState *  # Save the synchronization state files in the relevant directory
+    Master :dev-remote:
+    Slave :dev-local:
+    Patterns INBOX Archive Drafts Sent
 
 
-
-IMAPAccount me
-Host imap.yandex.com
-User me@gwn.wtf
-PassCmd "pass mail/me"
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore me-remote
-Account me
+    Host imap.yandex.com
+    User me@gwn.wtf
+    PassCmd "pass mail/me"
+    SSLType IMAPS
 
 MaildirStore me-local
-SubFolders Verbatim
-Path ~/mail/me/  # The trailing "/" is important
-Inbox ~/mail/me/Inbox
+    Path ~/mail/me/
+    Inbox ~/mail/me/Inbox
 
 Channel me
-Master :me-remote:
-Slave :me-local:
-Patterns INBOX Drafts Sent
-ExpireUnread yes
-SyncState *  # Save the synchronization state files in the relevant directory
+    Master :me-remote:
+    Slave :me-local:
+    Patterns INBOX Archive Drafts Sent
+
+
+
+IMAPStore gg-remote
+    Host imap.gmail.com
+    User egeavunc@gmail.com
+    PassCmd "pass mail/google"
+    SSLType IMAPS
+
+MaildirStore gg-local
+    Path ~/mail/gg/
+    Inbox ~/mail/gg/Inbox
+
+Channel gg-inbox
+    Master :gg-remote:Inbox
+    Slave :gg-local:Inbox
+
+Channel gg-drafts
+    Master :gg-remote:[Gmail]/Drafts
+    Slave :gg-local:Drafts
+
+Channel gg-archive
+    Master :gg-remote:[Gmail]/"All Mail"
+    Slave :gg-local:Archive
+    ExpireUnread yes
+
+Channel gg-sent
+    Master :gg-remote:[Gmail]/"Sent Mail"
+    Slave :gg-local:Sent
+
+Group gg gg-inbox gg-drafts gg-archive gg-sent

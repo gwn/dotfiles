@@ -1,15 +1,17 @@
 [database]
-path=/home/gwn/mail/gg
+path=/home/gwn/mail
 
 [user]
-name=Ege Avunc
+name=gwn
 primary_email=egeavunc@gmail.com
+other_email=dev@gwn.wtf;me@gwn.wtf;
 
 [new]
-tags=unread;
+tags=
+ignore=
 
 [search]
-exclude_tags=deleted;spam;
+exclude_tags=
 
 [maildir]
 synchronize_flags=true
