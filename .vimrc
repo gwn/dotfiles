@@ -53,7 +53,7 @@ nm <leader>w :se wrap!<CR>
 
 au filetype javascript nm <C-n> :!node %<CR>
 au filetype javascript nm <C-l> :!npx eslint %<CR>
-au filetype javascript,typescript,javascriptreact,typescriptreact setl ts=2 sw=2
+au filetype javascript,typescript,javascriptreact,typescriptreact setl ts=4 sw=4
 au filetype sh nm <C-l> :!shellcheck %<CR>
 au filetype solidity nm <C-l> :!solium -f %<CR>
 au filetype sql nm <C-l> :!<% sql-lint<CR>

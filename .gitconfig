@@ -1,49 +1,29 @@
 [user]
   name = gwn
-  email = 
+  email =
+  signingkey =
+
+[commit]
+  gpgsign = true
+
+[core]
+  excludesFile = ~/.gitignore
+
 [alias]
   a     = add
   d     = diff
   dc    = diff --cached
   s     = status -s
-  st    = status
+  ss    = status
   cm    = commit
   b     = branch
-  br    = branch
   co    = checkout
   l     = log
-  ll    = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset  %p' --abbrev-commit --date=relative
-  ld    = log --decorate
-  ls    = log --decorate --pretty=short --abbrev-commit
-  lo    = log --oneline --decorate
-[core]
-  editor = /usr/bin/vim
-[push]
-  default = simple
+
 [merge]
   tool = vimdiff
-[color]
-  branch = auto
-  diff = auto
-  status = auto
-[color "branch"]
-  local = yellow
-  remote = magenta
-[color "diff"]
-  meta = yellow
-  frag = magenta
-  old = red
-  new = green
-[color "status"]
-  added = green
-  changed = yellow
-  untracked = cyan
+
 [pager]
   log = diff-so-fancy | less --tabs=4 -RFX
   show = diff-so-fancy | less --tabs=4 -RFX
   diff = diff-so-fancy | less --tabs=4 -RFX
-[color "diff-highlight"]
-	oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
