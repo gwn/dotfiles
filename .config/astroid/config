@@ -7,7 +7,7 @@
     "accounts": {
         "gg": {
             "name": "Ege Avunc",
-            "email": "egeavunc@gmail.com",
+            "email": "<ENTER MAIL>",
             "sendmail": "msmtp --read-envelope-from -i -t --account=gg",
             "save_sent": "true",
             "save_sent_to": "/home/gwn/mail/gg/Sent/cur",
@@ -15,20 +15,20 @@
         },
         "dev": {
             "name": "gwn",
-            "email": "dev@gwn.wtf",
+            "email": "<ENTER MAIL>",
             "sendmail": "msmtp --read-envelope-from -i -t --account=dev",
             "always_gpg_sign": "true",
-            "gpgkey": "1BEA3B99A16020C3571F5ABB486513F46C66EF31",
+            "gpgkey": "<ENTER KEY>",
             "save_sent": "true",
             "save_sent_to": "/home/gwn/mail/dev/Sent/cur",
             "save_drafts_to": "/home/gwn/mail/dev/Drafts/cur"
         },
         "me": {
             "name": "gwn",
-            "email": "me@gwn.wtf",
+            "email": "<ENTER MAIL>",
             "sendmail": "msmtp --read-envelope-from -i -t --account=me",
             "always_gpg_sign": "true",
-            "gpgkey": "BF6AFA5BFCF53894CA7B64E941D82BB4530203A4",
+            "gpgkey": "<ENTER KEY>",
             "save_sent": "true",
             "save_sent_to": "/home/gwn/mail/me/Sent/cur",
             "save_drafts_to": "/home/gwn/mail/me/Drafts/cur"

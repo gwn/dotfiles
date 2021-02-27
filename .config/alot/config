@@ -4,44 +4,44 @@ initial_command = ""
 [accounts]
     [[gg]]
         realname = Ege Avunc
-        address = egeavunc@gmail.com
-        sendmail_command = msmtp --account=google -t
-        sent_box = maildir:///home/gwn/mail/gg/Sent/cur
-        draft_box = maildir:///home/gwn/mail/gg/Drafts/cur
+        address = <ENTER MAIL>
+        sendmail_command = msmtp --account=gg -t
+        sent_box = maildir:///home/gwn/mail/gg/Sent
+        draft_box = maildir:///home/gwn/mail/gg/Drafts
 
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:egeavunc@gmail.com'
+            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:<ENTER MAIL>'
             regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
             shellcommand_external_filtering = False
 
     [[dev]]
         realname = gwn
-        address = dev@gwn.wtf
+        address = <ENTER MAIL>
         sendmail_command = msmtp --account=dev -t
-        sent_box = maildir:///home/gwn/mail/dev/Sent/cur
-        draft_box = maildir:///home/gwn/mail/dev/Drafts/cur
-        gpg_key = 1BEA3B99A16020C3571F5ABB486513F46C66EF31
+        sent_box = maildir:///home/gwn/mail/dev/Sent
+        draft_box = maildir:///home/gwn/mail/dev/Drafts
+        gpg_key =
         sign_by_default = True
 
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:dev@gwn.wtf'
+            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:<ENTER MAIL>'
             regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
             shellcommand_external_filtering = False
 
     [[me]]
         realname = gwn
-        address = me@gwn.wtf
+        address = <ENTER MAIL>
         sendmail_command = msmtp --account=me -t
-        sent_box = maildir:///home/gwn/mail/me/Sent/cur
-        draft_box = maildir:///home/gwn/mail/me/Drafts/cur
-        gpg_key = BF6AFA5BFCF53894CA7B64E941D82BB4530203A4
+        sent_box = maildir:///home/gwn/mail/me/Sent
+        draft_box = maildir:///home/gwn/mail/me/Drafts
+        gpg_key =
         sign_by_default = True
 
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:me@gwn.wtf'
+            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:<ENTER MAIL>'
             regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
             shellcommand_external_filtering = False
 

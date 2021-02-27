@@ -1,0 +1,125 @@
+From a7d8e62f34b0ae62ff88f16e174a4d9d2a824e59 Mon Sep 17 00:00:00 2001
+From: Cesar Crusius <cesar.crusius@stanfordalumni.org>
+Date: Fri, 13 Mar 2020 14:16:13 -0700
+Subject: [PATCH] Add default support for scrolling with the mouse wheel.
+
+Also changes the scrollback() function so that the amount to scroll
+can be configured as a fraction of the screen height.
+
+This fixes #103.
+---
+ Makefile     |  2 +-
+ config.def.h | 16 ++++++++++++----
+ dvtm.1       |  4 ++++
+ dvtm.c       | 13 ++++++++++---
+ 4 files changed, 27 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 818ca0a..139a964 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,7 +10,7 @@ DEBUG_CFLAGS = ${CFLAGS} -UNDEBUG -O0 -g -ggdb -Wall -Wextra -Wno-unused-paramet
+ 
+ all: dvtm dvtm-editor
+ 
+-config.h:
++config.h: config.def.h
+ 	cp config.def.h config.h
+ 
+ dvtm: config.h config.mk *.c *.h
+diff --git a/config.def.h b/config.def.h
+index 513c734..d551334 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -120,12 +120,12 @@ static KeyBinding bindings[] = {
+ 	{ { MOD, 'E',          }, { copymode,       { "dvtm-pager" }            } },
+ 	{ { MOD, '/',          }, { copymode,       { "dvtm-pager", "/" }       } },
+ 	{ { MOD, 'p',          }, { paste,          { NULL }                    } },
+-	{ { MOD, KEY_PPAGE,    }, { scrollback,     { "-1" }                    } },
+-	{ { MOD, KEY_NPAGE,    }, { scrollback,     { "1"  }                    } },
++	{ { MOD, KEY_PPAGE,    }, { scrollback,     { "-2" }                    } },
++	{ { MOD, KEY_NPAGE,    }, { scrollback,     { "2"  }                    } },
+ 	{ { MOD, '?',          }, { create,         { "man dvtm", "dvtm help" } } },
+ 	{ { MOD, MOD,          }, { send,           { (const char []){MOD, 0} } } },
+-	{ { KEY_SPREVIOUS,     }, { scrollback,     { "-1" }                    } },
+-	{ { KEY_SNEXT,         }, { scrollback,     { "1"  }                    } },
++	{ { KEY_SPREVIOUS,     }, { scrollback,     { "-2" }                    } },
++	{ { KEY_SNEXT,         }, { scrollback,     { "2"  }                    } },
+ 	{ { MOD, '0',          }, { view,           { NULL }                    } },
+ 	{ { MOD, KEY_F(1),     }, { view,           { tags[0] }                 } },
+ 	{ { MOD, KEY_F(2),     }, { view,           { tags[1] }                 } },
+@@ -177,6 +177,8 @@ static const ColorRule colorrules[] = {
+ 
+ #ifdef NCURSES_MOUSE_VERSION
+ # define CONFIG_MOUSE /* compile in mouse support if we build against ncurses */
++#else
++# warning "Compiling without mouse support"
+ #endif
+ 
+ #define ENABLE_MOUSE true /* whether to enable mouse events by default */
+@@ -187,6 +189,12 @@ static Button buttons[] = {
+ 	{ BUTTON1_DOUBLE_CLICKED, { mouse_fullscreen, { "[ ]" } } },
+ 	{ BUTTON2_CLICKED,        { mouse_zoom,       { NULL  } } },
+ 	{ BUTTON3_CLICKED,        { mouse_minimize,   { NULL  } } },
++# if NCURSES_MOUSE_VERSION > 1
++	{ BUTTON4_PRESSED,        { scrollback,       { "-4" } } },
++	{ BUTTON5_PRESSED,        { scrollback,       { "4"  } } },
++# else
++#  warning "Compiling without mouse wheel support"
++# endif
+ };
+ #endif /* CONFIG_MOUSE */
+ 
+diff --git a/dvtm.1 b/dvtm.1
+index 10e930a..78b4b54 100644
+--- a/dvtm.1
++++ b/dvtm.1
+@@ -243,6 +243,10 @@ Zoom/cycle current window to/from master area.
+ .
+ .It Ic Button3 click
+ Toggle minimization of current window.
++.
++.It Ic Button4/Button5 (mouse wheel)
++Scroll using the mouse wheel. This is only available if dvtm was compiled
++with ncurses version 6 or higher.
+ .El
+ .
+ .
+diff --git a/dvtm.c b/dvtm.c
+index 2b7ebdc..c85638f 100644
+--- a/dvtm.c
++++ b/dvtm.c
+@@ -1318,13 +1318,19 @@ redraw(const char *args[]) {
+ 
+ static void
+ scrollback(const char *args[]) {
++	int div = 0;
+ 	if (!is_content_visible(sel))
+ 		return;
+ 
+-	if (!args[0] || atoi(args[0]) < 0)
+-		vt_scroll(sel->term, -sel->h/2);
++	if (args[0])
++		div = atoi(args[0]);
++	if (!div)
++		div = -2;
++
++	if (div > sel->h)
++		vt_scroll(sel->term,  abs(div)/div);
+ 	else
+-		vt_scroll(sel->term,  sel->h/2);
++		vt_scroll(sel->term,  sel->h/div);
+ 
+ 	draw(sel);
+ 	curs_set(vt_cursor_visible(sel->term));
+@@ -1634,6 +1640,7 @@ handle_mouse(void) {
+ #ifdef CONFIG_MOUSE
+ 	MEVENT event;
+ 	unsigned int i;
++	debug("mouse\n");
+ 	if (getmouse(&event) != OK)
+ 		return;
+ 	msel = get_client_by_coord(event.x, event.y);
+-- 
+2.30.1
+

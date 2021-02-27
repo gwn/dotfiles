@@ -19,6 +19,7 @@
   b     = branch
   co    = checkout
   l     = log
+  ls    = log --show-signature
 
 [merge]
   tool = vimdiff
