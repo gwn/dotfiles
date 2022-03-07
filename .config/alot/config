@@ -1,53 +1,69 @@
 terminal_cmd = "st -w"
-initial_command = ""
+prefer_plaintext = True
+theme = ege
+
 
 [accounts]
+    [[dev]]
+        realname = gwn
+        address = dev@gwn.wtf
+        sendmail_command = msmtp --account=dev -t
+        sent_box = maildir:///home/gwn/mail/dev/Sent
+        draft_box = maildir:///home/gwn/mail/dev/Drafts
+        gpg_key = 1BEA3B99A16020C3571F5ABB486513F46C66EF31
+        sign_by_default = True
+
+        [[[abook]]]
+            type = shellcommand
+            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:dev@gwn.wtf'
+            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            shellcommand_external_filtering = False
+
     [[gg]]
         realname = Ege Avunc
-        address = <ENTER MAIL>
+        address = egeavunc@gmail.com
         sendmail_command = msmtp --account=gg -t
         sent_box = maildir:///home/gwn/mail/gg/Sent
         draft_box = maildir:///home/gwn/mail/gg/Drafts
 
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:<ENTER MAIL>'
-            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
-            shellcommand_external_filtering = False
-
-    [[dev]]
-        realname = gwn
-        address = <ENTER MAIL>
-        sendmail_command = msmtp --account=dev -t
-        sent_box = maildir:///home/gwn/mail/dev/Sent
-        draft_box = maildir:///home/gwn/mail/dev/Drafts
-        gpg_key =
-        sign_by_default = True
-
-        [[[abook]]]
-            type = shellcommand
-            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:<ENTER MAIL>'
+            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:egeavunc@gmail.com'
             regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
             shellcommand_external_filtering = False
 
     [[me]]
         realname = gwn
-        address = <ENTER MAIL>
+        address = me@gwn.wtf
         sendmail_command = msmtp --account=me -t
         sent_box = maildir:///home/gwn/mail/me/Sent
         draft_box = maildir:///home/gwn/mail/me/Drafts
-        gpg_key =
+        gpg_key = BF6AFA5BFCF53894CA7B64E941D82BB4530203A4
         sign_by_default = True
 
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:<ENTER MAIL>'
+            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:me@gwn.wtf'
             regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
             shellcommand_external_filtering = False
 
+    [[rh]]
+        realname = Referencehood Destek
+        address = destek@referencehood.com
+        sendmail_command = msmtp --account=rh -t
+        sent_box = maildir:///home/gwn/mail/rh/Sent
+        draft_box = maildir:///home/gwn/mail/rh/Drafts
+
 
 [bindings]
+    [[search]]
+        'f a' = "shellescape '/usr/bin/mbsync --pull -a && notmuch new'; refresh"
+        'f d' = "shellescape '/usr/bin/mbsync --pull dev && notmuch new'; refresh"
+        'f g' = "shellescape '/usr/bin/mbsync --pull gg && notmuch new'; refresh"
+        'f r' = "shellescape '/usr/bin/mbsync --pull rh && notmuch new'; refresh"
+        'f m' = "shellescape '/usr/bin/mbsync --pull me && notmuch new'; refresh"
+
     [[thread]]
         h = pipeto --background mailhtmlview
-        D = pipeto maildiffview
+        D = pipeto --background maildiffview
         r = reply --all
