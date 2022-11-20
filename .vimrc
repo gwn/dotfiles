@@ -28,6 +28,7 @@ se foldmethod=indent
 se foldlevelstart=99
 se list
 se listchars=tab:<->,trail:@
+se complete-=i
 se completeopt=menu,menuone,popup
 se splitbelow
 
@@ -53,15 +54,19 @@ nm <leader>w :se wrap!<CR>
 
 au filetype javascript nm <C-n> :!node %<CR>
 au filetype javascript nm <C-l> :!npx eslint %<CR>
-au filetype javascript,typescript,javascriptreact,typescriptreact setl ts=4 sw=4
+au filetype javascript,typescript,javascriptreact,typescriptreact,vue setl ts=4 sw=4
+au filetype json setl ts=2 sw=2 foldlevel=2
 au filetype sh nm <C-l> :!shellcheck %<CR>
 au filetype solidity nm <C-l> :!solium -f %<CR>
 au filetype sql nm <C-l> :!<% sql-lint<CR>
 au filetype python setl ts=4 sw=4 cinw+=elif,except,finally,def,class
+au filetype python nm <C-n> :!python %<CR>
+au filetype python nm <C-l> :!flake8 %<CR>
 au filetype go setl noexpandtab ts=8 sw=8
 au filetype make setl noexpandtab nolist
 au filetype text,markdown,mail,gitcommit setl nosmartindent textwidth=66
 au VimEnter,BufNewFile,BufRead * if &filetype ==# '' | setl textwidth=66 | endif
+au VimEnter,BufNewFile,BufRead *.ejs set filetype=html
 au CompleteDone * pclose
 
 nm <leader>t :TagbarToggle<CR>
