@@ -30,6 +30,7 @@ se list
 se listchars=tab:<->,trail:@
 se complete-=i
 se completeopt=menu,menuone,popup
+se infercase
 se splitbelow
 
 let mapleader=" "
