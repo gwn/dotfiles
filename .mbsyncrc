@@ -42,7 +42,7 @@ Channel me
 
 IMAPStore gg-remote
     Host imap.gmail.com
-    User egeavunc@gmail.com
+    User censored@gmail.com
     PassCmd "pass mail/google"
     SSLType IMAPS
 

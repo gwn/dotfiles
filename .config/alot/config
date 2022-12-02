@@ -20,16 +20,15 @@ theme = ege
             shellcommand_external_filtering = False
 
     [[gg]]
-        realname = Ege Avunc
-        address = egeavunc@gmail.com
+        realname = gwn
+        address = censored@gmail.com
         sendmail_command = msmtp --account=gg -t
         sent_box = maildir:///home/gwn/mail/gg/Sent
         draft_box = maildir:///home/gwn/mail/gg/Drafts
 
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:egeavunc@gmail.com'
-            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            command = 'notmuch address --format=json --output=recipients date:5Y.. AND from:censored@gmail.com' regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
             shellcommand_external_filtering = False
 
     [[me]]
