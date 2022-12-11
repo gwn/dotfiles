@@ -6,7 +6,7 @@
     },
     "accounts": {
         "gg": {
-            "name": "Ege Avunc",
+            "name": "censored",
             "email": "<ENTER MAIL>",
             "sendmail": "msmtp --read-envelope-from -i -t --account=gg",
             "save_sent": "true",
