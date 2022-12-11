@@ -1,0 +1,18 @@
+[general]
+status_path = "~/.vdirsyncer/status/"
+
+[pair cal]
+a = "cal_local"
+b = "cal_remote"
+collections = ["from a", "from b"]
+
+[storage cal_local]
+type = "filesystem"
+path = "~/.calendars/"
+fileext = ".ics"
+
+[storage cal_remote]
+type = "caldav"
+url = "<caldav-server-url>"
+username.fetch = ["shell", "pass caldav | tail +2"]
+password.fetch = ["shell", "pass caldav | head -1"]
