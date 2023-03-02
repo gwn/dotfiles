@@ -2,6 +2,7 @@
 
 export EDITOR=vim
 
+synclient TapButton1=1 VertScrollDelta=-85
 xset r rate 350 30
 unclutter -b
 slstatus &
