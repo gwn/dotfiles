@@ -247,7 +247,7 @@ keycode 253 =
 keycode 254 =
 keycode 255 =
 
-clear      lock 
+clear      lock
 clear   control
 clear      mod1
 clear      mod4
@@ -262,4 +262,4 @@ keycode 108 = Mode_switch NoSymbol Mode_switch
 add     control = Control_L Control_R
 add        mod1 = Alt_L Alt_R Meta_L
 add        mod4 = Super_L Super_R
-add        mod5 = Mode_switch ISO_Level3_Shift
+!add        mod5 = Mode_switch ISO_Level3_Shift
