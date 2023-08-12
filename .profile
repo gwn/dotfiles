@@ -28,6 +28,8 @@ alias b=bitcoin-cli
 alias br='bitcoin-cli -regtest'
 alias gi=git
 
+j() { cd $(find ${1:-.} -type d | fzf); }
+
 gitCmd=gi ## default is "git". Useful for aliases
 source /usr/share/git/completion/git-completion.bash
 
