@@ -2,7 +2,7 @@
 
 set -o vi
 
-test $TERM = linux && . $HOME/.env
+source $HOME/.env
 
 alias sudo="sudo "
 # https://askubuntu.com/a/22043
@@ -35,3 +35,9 @@ source /usr/share/git/completion/git-completion.bash
 
 complete -o bashdefault -o default -o nospace -F _git $gitCmd 2>/dev/null \
     || complete -o default -o nospace -F _git $gitCmd
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
