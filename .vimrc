@@ -49,7 +49,7 @@ nm <leader>w 80\|
 nm <leader>n :noh<CR>
 nm <leader>8 :se cc=80<CR>
 nm <leader>* :se cc=0<CR>
-nm <leader>p :read !xsel -b<CR>
+nm <leader>p :read !xclip -o<CR>
 nm <leader>a :echo @%<CR>
 nm <leader>w :se wrap!<CR>
 
